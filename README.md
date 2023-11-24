@@ -1,5 +1,8 @@
-# Muzadde-Today-Platform
+# React + Vite
 
-This a repository for our social Impact Project named Muzadde-Today(its a parenting platform)
-Its built using HTML,CSS, Javascript, ReactJs, TailwindCSS and Mantine
-To access the platform file on your local machine use the command <git clone link>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
