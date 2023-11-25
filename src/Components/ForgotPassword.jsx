@@ -25,12 +25,12 @@ function ForgotPassword() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-2xl font-semibold mb-4">Forgot Password</h2>
+      <h2 className="text-2xl font-semibold mb-4">Forgot Password?</h2>
       {isResetLinkSent ? (
-        <p className="text-green-600 mb-4">Password reset link sent! Check your email.</p>
+        <p className="text-green-600 mb-4">Password reset link sent! Please check your email.</p>
       ) : (
         <React.Fragment>
-          <p className="text-gray-700 mb-8">Enter your email to reset your password.</p>
+          <p className="text-gray-700 mb-8">Please enter your email to reset your password.</p>
           <form>
             <div className="mb-4">
               <label htmlFor="email" className="block text-sm font-semibold text-gray-800">
