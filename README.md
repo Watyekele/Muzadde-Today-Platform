@@ -22,4 +22,4 @@ Then go ahead install dependencies using the command
 After you've created your contribution in the feature branch e.g feature/user-sign-up, raise a pull request for the team to review your changes and receive approval before they are merged into the main application branch.
 
 ### Deployment
-After changes are merged, the code in the develop branch is deployed to vercel to created a test deployment link for project. [Here is the deployment link](https://muzadde-today-platform.vercel.app/) for the current state of the project.
+After changes are merged, the code in the develop branch is deployed to vercel to create a test deployment link for project. [Here is the deployment link](https://muzadde-today-platform.vercel.app/) for the current state of the project.
