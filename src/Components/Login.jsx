@@ -11,7 +11,6 @@ function Login() {
   };
 
   const handleLogin = () => {
-   
     console.log('Logging in with:', { email, password, rememberMe });
 
     // If "Remember Me" is checked, store a flag in local storage
@@ -23,8 +22,9 @@ function Login() {
   };
 
   return (
-    <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
+    <div className="relative flex flex-col lg:flex-row justify-center min-h-screen overflow-hidden">
+      {/* Left Side (Content) */}
+      <div className="lg:w-1/2 w-full p-6 m-auto bg-white rounded-md shadow-xl">
         <h1 className="text-3xl font-semibold text-center text-green-700 uppercase">
           Welcome to Muzadde Today
         </h1>
@@ -54,7 +54,7 @@ function Login() {
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
-          <div className="mb-2 flex justify-between">
+          <div className="mb-2 flex justify-between items-center">
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -102,11 +102,20 @@ function Login() {
           </button>
         </div>
         <p className="mt-8 text-xs font-light text-center text-gray-700">
-          Are you a new member?{" "}
+          Are you a new member?{' '}
           <Link to="/signup" className="font-medium text-purple-600 hover:underline">
             Create Account
           </Link>
         </p>
+      </div>
+
+      {/* Right Side (Image) */}
+      <div className="lg:w-1/2 hidden lg:flex items-center justify-center">
+        <img
+          src="src/assets/IMG-20231126-WA0004.jpg" 
+          alt="Right Side Image"
+         
+        />
       </div>
     </div>
   );
