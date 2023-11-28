@@ -1,0 +1,111 @@
+import React from 'react';
+
+const BlogPost = ({ image, title, writerImage, views, writerName }) => {
+  return (
+    <div className="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-lg m-4">
+      <img className="w-full h-48 object-cover" src={image} alt={title} />
+      <div className="p-6">
+        <div className="flex items-center mb-4">
+          <img
+            className="w-10 h-10 rounded-full mr-4 object-cover"
+            src={writerImage}
+            alt="Writer"
+          />
+          <p className="text-gray-900 font-medium">{title}</p>
+        </div>
+        <p className="text-gray-500">{writerName}</p>
+        <p className="text-gray-700">{views} views</p>
+      </div>
+    </div>
+  );
+};
+
+const BlogList = ({ blogs }) => {
+  return (
+    <div className="flex flex-wrap justify-center">
+      {blogs.map((post) => (
+        <BlogPost
+          key={post.id}
+          image={post.image}
+          title={post.title}
+          writerImage={post.writerImage}
+          views={post.views}
+          writerName={post.writerName}
+        />
+      ))}
+    </div>
+  );
+};
+
+function App() {
+  const parentBlogPosts = [
+    {
+      id: 1,
+      image: 'src/assets/vaccination.jpg',
+      title: 'How to prepare your child for vaccination',
+      writerImage: 'src/assets/download (4).jpg',
+      views: 970,
+      writerName: 'Philip Male',
+    },
+    {
+      id: 2,
+      image: 'src/assets/pregnancy.jpg',
+      title: 'Why you should not wear heels during Pregnancy',
+      writerImage: 'src/assets/download (8).jpg',
+      views: 800,
+      writerName: 'Rehema Anzo',
+    },
+    {
+      id: 3,
+      image: 'src/assets/vaccination.jpg',
+      title: 'How to prepare your child for vaccination',
+      writerImage: 'src/assets/download (4).jpg',
+      views: 970,
+      writerName: 'Philip Male',
+    },
+    {
+      id: 4,
+      image: 'src/assets/pregnancy.jpg',
+      title: 'Why you should not wear heels during Pregnancy',
+      writerImage: 'src/assets/download (8).jpg',
+      views: 800,
+      writerName: 'Rehema Anzo',
+    },
+  ];
+
+  return (
+    <div className="App p-6">
+      <h1 className="text-4xl text-green-900 font-bold mb-6 text-center">
+        Do You Want to be a Muzadde Today Blogger?
+      </h1>
+      <p className="mb-4 text-center">
+        Muzadde Today is an online community of parents supporting fellow parents through the journey of raising children. Are you a parent who wishes to join our community of mum and dad bloggers? Signup today and start writing your first blog on topics related to child growth, development, and upbringing.
+      </p>
+      <div className="flex justify-end items-center mb-4">
+        <div>
+          <button className="bg-green-900 text-white px-4 py-2 rounded">
+            Log In
+          </button>
+          <button className="ml-2 bg-green-900 text-white px-4 py-2 rounded">
+            Sign Up
+          </button>
+        </div>
+      </div>
+      <h2 className="text-2xl text-green-900 font-bold mb-4">Parent's Blogs</h2>
+      <div className="flex">
+        <button className=" bg-green-900 mr-2 border px-4 py-2 rounded-full">All</button>
+        <button className="mr-2 border px-4 py-2 rounded-r">High Risk Pregnancy</button>
+        <button className="mr-2 border px-4 py-2 rounded-r">Vaccination</button>
+        <button className="mr-2 border px-4 py-2 rounded-r">Tests</button>
+        <button className="mr-2 border px-4 py-2 rounded-r">
+          Lactation and Breastfeeding
+        </button>
+      </div>
+      
+      <BlogList blogs={[parentBlogPosts[0], parentBlogPosts[1]]} />
+      <BlogList blogs={[parentBlogPosts[2], parentBlogPosts[3]]} />
+    </div>
+  );
+}
+
+export default App;
