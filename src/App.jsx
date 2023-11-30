@@ -70,6 +70,8 @@ function App() {
       <Blogs blogs={parentBlogPosts} />
       <Footer />
     </div>
+
+
   );
 }
 
