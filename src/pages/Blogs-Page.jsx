@@ -43,6 +43,6 @@ const Blogs = ({ blogs }) => {
       <BlogList blogs={blogs} />
     </div>
   );
-};
+}
 
 export default Blogs;
