@@ -1,5 +1,6 @@
 import React from 'react';
 import Blogs from './pages/Blogs.jsx';
+import Footer from './Components/Footer.jsx'
 
 function App() {
   const parentBlogPosts = [
@@ -67,6 +68,7 @@ function App() {
       </div>
       
       <Blogs blogs={parentBlogPosts} />
+      <Footer />
     </div>
   );
 }
