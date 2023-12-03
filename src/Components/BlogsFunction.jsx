@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const BlogPost = ({ image, title, writerImage, views, writerName }) => {
   return (
@@ -7,7 +7,7 @@ const BlogPost = ({ image, title, writerImage, views, writerName }) => {
       <div className="p-6">
         <div className="flex items-center mb-4">
           <img
-            className="w-10 h-10 rounded-full mr-4 object-cover"
+            className="w-10 h-10 rounded-full mr-4 object-cover "
             src={writerImage}
             alt="Writer"
           />
@@ -43,6 +43,6 @@ const Blogs = ({ blogs }) => {
       <BlogList blogs={blogs} />
     </div>
   );
-}
+};
 
 export default Blogs;
