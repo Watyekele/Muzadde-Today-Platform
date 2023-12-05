@@ -1,7 +1,8 @@
-// App.js
-import React from 'react';
-import Talks from './Components/Talks';
 
+import React from "react";
+import "./App.css";
+  import Talks from './Components/Talks';
+import Nav from "./Components/Nav.jsx";
 function App() {
   return (
     <div className="App">
