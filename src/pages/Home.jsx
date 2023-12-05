@@ -6,7 +6,7 @@ function Homepage() {
     <div>
       <Nav />
 
-      <div className="page">
+      <div className="page text-lg">
         {/* First Container */}
         <div className="bg-gray-300 text-white p-8">
           {/* Search Bar */}
@@ -123,26 +123,26 @@ function Homepage() {
         </div>
 
         {/* Third Container */}
-        <div className="bg-pink-50 text-black p-8">
+        <div className="bg-pink-50 text-black pl-64 py-4 pr-16">
           {/* Image and Text */}
           <div className="flex items-right">
             {/* Image */}
-            <div className="w-1/3  ">
+            <div className="w-1/3 ml-8 ">
               <img
                 src="src/assets/IMG-20231124-WA0019.jpg"
                 alt="Testimony"
-                className="rounded-md object-cover w-48 h-96 ml-8"
+                className="rounded-md object-cover w-48 h-96 "
               />
             </div>
 
             {/* Text */}
-            <div className="flex-1 bg-white p-8">
+            <div className="flex-1 bg-white p-8 -mr-2 ">
               <h2 className="text-3xl font-bold mb-4">Testimonies</h2>
               <div className="flex items-center mb-4">
                 <img
                   src="src/assets/muzadde2.jpg"
                   alt="parent image"
-                  className="w-8 h-8 rounded-full mr-2"
+                  className="w-8 h-8 rounded-full mr-2 object-cover"
                 />
                 <div>
                   <h3 className="font-bold">Ruth Namatovu</h3>
@@ -156,7 +156,7 @@ function Homepage() {
                 <img
                   src="src/assets/muzade1.jpg"
                   alt="parent image"
-                  className="w-8 h-8 rounded-full mr-2"
+                  className="w-8 h-8 rounded-full mr-2 object-cover"
                 />
                 <div>
                   <h3 className="font-bold">Meddie Kaggwa</h3>

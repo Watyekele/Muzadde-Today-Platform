@@ -36,15 +36,31 @@ function BlogsPage() {
       views: 800,
       writerName: "Rehema Anzo",
     },
+    {
+      id: 5,
+      image: "src/assets/pregnancy.jpg",
+      title: "Why you should not wear heels during Pregnancy",
+      writerImage: "src/assets/download (8).jpg",
+      views: 800,
+      writerName: "Rehema Anzo",
+    },
+    {
+      id: 6,
+      image: "src/assets/pregnancy.jpg",
+      title: "Why you should not wear heels during Pregnancy",
+      writerImage: "src/assets/download (8).jpg",
+      views: 800,
+      writerName: "Rehema Anzo",
+    },
   ];
   return (
     <div>
       <Nav />
-      <div className=" page App p-6 bg-pink-50">
+      <div className=" page App p-6 bg-pink-50 text-xl">
         <h1 className="text-4xl text-green-900 font-bold mb-6 text-left">
           Do You Want to be a Muzadde Today Blogger?
         </h1>
-        <p className="mb-4 text-center">
+        <p className="mb-4 text-left">
           Muzadde Today is an online community of parents supporting fellow
           parents through the journey of raising children. Are you a parent who
           wishes to join our community of mum and dad bloggers? Signup today and

@@ -3,15 +3,21 @@ import React from "react";
 const BlogPost = ({ image, title, writerImage, views, writerName }) => {
   return (
     <div className="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-lg m-4">
-      <img className="w-full h-48 object-cover" src={image} alt={title} />
+      <img
+        className="w-full h-48 object-cover  transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50"
+        src={image}
+        alt={title}
+      />
       <div className="p-6">
-        <div className="flex items-center mb-4">
+        <div className="flex items-left mb-4">
           <img
             className="w-10 h-10 rounded-full mr-4 object-cover "
             src={writerImage}
             alt="Writer"
           />
-          <p className="text-gray-900 font-medium">{title}</p>
+          <p className="text-gray-900 font-medium  transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-200">
+            {title}
+          </p>
         </div>
         <p className="text-gray-500">{writerName}</p>
         <p className="text-gray-700">{views} views</p>
@@ -22,7 +28,7 @@ const BlogPost = ({ image, title, writerImage, views, writerName }) => {
 
 const BlogList = ({ blogs }) => {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center items-left">
       {blogs.map((post) => (
         <BlogPost
           key={post.id}

@@ -8,6 +8,7 @@ import BlogsPage from "./pages/Blogs.jsx";
 import FAQ from "./pages/Muzadde-Plus-page.jsx";
 import Talk from "./pages/Talk.jsx";
 import AskExp from "./pages/Ask-Expert-Page.jsx";
+import Subscription from "./Components/Subscription.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/askExp",
     element: <AskExp />,
+  },
+  {
+    path: "/subscription",
+    element: <Subscription />,
   },
 ]);
 
