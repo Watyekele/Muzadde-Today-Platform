@@ -23,7 +23,7 @@ function Login() {
 
   return (
     <div className="relative flex flex-col lg:flex-row justify-center min-h-screen overflow-hidden">
-      {/* Left Side (Content) */}
+    
       <div className="lg:w-1/2 w-full p-6 m-auto bg-white rounded-md shadow-xl">
         <h1 className="text-3xl font-semibold text-center text-green-700 uppercase">
           Welcome to Muzadde Today
@@ -109,14 +109,7 @@ function Login() {
         </p>
       </div>
 
-      {/* Right Side (Image) */}
-      <div className="lg:w-1/2 hidden lg:flex items-center justify-center">
-        <img
-          src="src/assets/IMG-20231126-WA0004.jpg" 
-          alt="Right Side Image"
-         
-        />
-      </div>
+      
     </div>
   );
 }

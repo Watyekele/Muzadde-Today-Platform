@@ -46,7 +46,7 @@ const Signup = () => {
                         <button
                             type="button"
                             className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-pink-600 focus:outline-none focus:bg-purple-600"
-                            onClick={() => console.log("Create Account clicked")} // Replace with your create account logic
+                            onClick={() => console.log("Create Account clicked")} // Replace with any other create account logic
                         >
                             Create Account
                         </button>
