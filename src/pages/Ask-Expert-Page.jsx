@@ -33,8 +33,8 @@ function AskExp() {
               Get Prompt advice from doctors and child specialists
             </p>
             {/* Button and Input Field */}
-            <div className="flex justify-right">
-              <button className="bg-gray-200  px-6 rounded-md grid justify-end ">
+            <div className="flex justify-right p-2 m-2">
+              <button className="bg-gray-200  px-6 rounded-md grid justify-end mr-2 ">
                 Ask Now
               </button>
               <input type="text" className="border-2" />

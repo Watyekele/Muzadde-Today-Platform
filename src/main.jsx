@@ -9,6 +9,10 @@ import FAQ from "./pages/Muzadde-Plus-page.jsx";
 import Talk from "./pages/Talk.jsx";
 import AskExp from "./pages/Ask-Expert-Page.jsx";
 import Subscription from "./Components/Subscription.jsx";
+import Login from "./pages/login.jsx";
+import SignUp from "./pages/SignUp.jsx";
+import BVlogs from "./pages/layouts/BVlogs.jsx";
+import Details from "./pages/layouts/Details.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -34,6 +38,22 @@ const appRouter = createBrowserRouter([
   {
     path: "/subscription",
     element: <Subscription />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/bvlogs",
+    element: <BVlogs />,
+  },
+  {
+    path: "/details/:id",
+    element: <Details />,
   },
 ]);
 

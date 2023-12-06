@@ -1,12 +1,13 @@
-
 import React from "react";
 import "./App.css";
-  import Talks from './Components/Talks';
+import Talk from "./pages/Talk.jsx";
+import Login from "./pages/login.jsx";
 import Nav from "./Components/Nav.jsx";
 function App() {
   return (
     <div className="App">
-      <Talks />
+      <Talk />
+      <Login />
     </div>
   );
 }
