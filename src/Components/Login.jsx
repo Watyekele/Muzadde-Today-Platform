@@ -7,7 +7,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const { loginWithRedirect } = useAuth0(); // Use loginWithRedirect
+  const { loginWithRedirect } = useAuth0(); // loginWithRedirect
 
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
