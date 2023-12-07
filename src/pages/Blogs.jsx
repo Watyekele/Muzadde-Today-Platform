@@ -22,56 +22,7 @@ function BlogsPage() {
     };
     fetchBlogs();
   }, []);
-  // const parentBlogPosts = [
-  //   {
-  //     id: 1,
-  //     image: "src/assets/polio treatment.jpg",
-  //     title: "What you need to know about Polio vaccination",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "src/assets/pregnancy.jpg",
-  //     title: "Why you should not wear heels during Pregnancy",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: "src/assets/vaccination.jpg",
-  //     title: "How to prepare your child for vaccination",
-  //     writerImage: "src/assets/download (4).jpg",
-  //     views: 970,
-  //     writerName: "Philip Male",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: "src/assets/Honey.webp",
-  //     title: "Why is it good to take honey during pregnancy",
-  //     writerImage: "src/assets/download (4).jpg",
-  //     views: 970,
-  //     writerName: "Hope Sekabembe",
-  //   },
-  //   {
-  //     id: 5,
-  //     image: "src/assets/painkillers.jpg",
-  //     title: "Why you should not take painkillers during pregnancy",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  //   {
-  //     id: 6,
-  //     image: "src/assets/coconut.jpg",
-  //     title: "Why is coconut water good for your child",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  // ];
+
   return (
     <div>
       <Nav />

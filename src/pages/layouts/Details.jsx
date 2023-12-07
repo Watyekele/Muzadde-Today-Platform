@@ -1,31 +1,49 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:1337";
-
-export default function Details() {
-  let { id } = useParams();
-  const [blog, setBlog] = useState([]);
+const Details = () => {
+  const { id } = useParams();
+  const [blog, setBlog] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBlog = async () => {
+    const getBlog = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/blogs1`);
-        console.log(response.data.data.filter((post) => post.id === id));
-        setBlog(response.data.data);
+        const response = await fetch(`http://localhost:1337/api/blogs1/${id}`);
+        const data = await response.json();
+        setBlog(data.data.attributes);
+        setLoading(false);
       } catch (error) {
-        console.error("error fetching blog data", error);
+        console.error("Error fetching blog:", error);
+        setLoading(false);
       }
     };
-    fetchBlog();
-  }, [blog]);
+    getBlog();
+  }, [id]);
 
-  let post = blog.filter((data) => data.id === id);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  console.log(blog);
   return (
-    <div>
-      {post.imagelink}
-      {post.Title}
+    <div className="page bg-gray-500/20 h-full mt-2 ">
+      <div className="content p-4 pt-4 ">
+        <div className="row row2">
+          <div className="product-col4">
+            <h1 className="text-center text-4xl mb-4 font-bold">
+              {blog.Title}
+            </h1>
+            <img
+              src={blog.Imagelink}
+              alt={blog.Title}
+              className="w-96 m-4 rounded-lg"
+            />
+          </div>
+          <div className="col-single text-2xl">{blog.Content}</div>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Details;
