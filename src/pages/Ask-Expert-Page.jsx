@@ -1,8 +1,36 @@
+import React, { useState } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
-import { Link } from "react-router-dom";
-import Subscription from "../Components/Subscription";
-function AskExp() {
+
+function AskExpertPage() {
+  const [questions, setQuestions] = useState([
+    {
+      patientName: "Mercy Ajok",
+      question: "My 5-year-old has anger outbursts and is always beating his classmates. Will he outgrow?",
+      answer: "Anger issues in children can be challenging. It's recommended to consult with a child psychologist for a thorough assessment and guidance.",
+      doctor: { name: "Dr. Miranda Atim", image: "src/assets/miranda.jpg", specialty: "Child Psychologist" },
+    },
+    {
+      patientName: "Rose Mary",
+      question: "My 1-year-old is very small, compared to all his agemates and has no appetite. What should I do?",
+      answer: "Nutritional concerns are common among parents. Ensure you're offering a balanced diet. If concerns persist, consult with a nutritionist for personalized advice.",
+      doctor: { name: "Dr. Robinah Kitiibwa", image: "src/assets/nutritionist.jpg", specialty: "Nutritionist" },
+    },
+  ]);
+
+  const [newQuestion, setNewQuestion] = useState('');
+
+  const handleAskQuestion = () => {
+    const newQuestionObject = {
+      patientName: "Muzadde Today User", // Patient's name can also be based on user input
+      question: newQuestion,
+      answer: "", // Initialize the answer as an empty string
+      doctor: {}, // The doctor will provide an answer
+    };
+    setQuestions([...questions, newQuestionObject]);
+    setNewQuestion('');
+  };
+
   return (
     <div>
       <Nav />
@@ -17,11 +45,9 @@ function AskExp() {
             />
             <h4 className=" font-bold w-full">
               96% queries resolved in less than 45 minutes.{" "}
-              <Link to="/subscription">
-                <span className="text-blue-800 underline underline-offset-1">
-                  Choose a plan
-                </span>
-              </Link>{" "}
+              <span className="text-blue-800 underline underline-offset-1">
+                Choose a plan
+              </span>{" "}
               best suited for you
             </h4>
           </section>
@@ -30,14 +56,22 @@ function AskExp() {
               Make informed decisions{" "}
             </h2>
             <p className="text-2xl  indent-16 font-bold">
-              Get Prompt advice from doctors and child specialists
+              Get prompt advice from doctors and child specialists
             </p>
             {/* Button and Input Field */}
             <div className="flex justify-right p-2 m-2">
-              <button className="bg-gray-200  px-6 rounded-md grid justify-end mr-2 ">
+              <textarea
+                placeholder="Ask a question..."
+                value={newQuestion}
+                onChange={(e) => setNewQuestion(e.target.value)}
+                className="border p-2"
+              ></textarea>
+              <button
+                onClick={handleAskQuestion}
+                className="bg-blue-500 text-white px-6 rounded-md ml-2"
+              >
                 Ask Now
               </button>
-              <input type="text" className="border-2" />
             </div>
           </section>
         </div>
@@ -47,7 +81,7 @@ function AskExp() {
             Top Questions
           </h2>
           <section className="content-center flex flex-wrap font-bold ">
-            <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
+            <button className="bg-gray-200 px-6 py-2 rounded-full mx-2 my-2">
               All
             </button>
             <button className="bg-gray-200 px-6 py-2rounded-md mx-2 my-2">
@@ -66,145 +100,45 @@ function AskExp() {
               Lactation and Breastfeeding
             </button>
           </section>
+          {/* Display Questions and Answers */}
           <div className="questions bg-zinc-200 mt-4 px-auto py-6 rounded-md flex content-center m-auto grid grid-cols-2 items-center ">
-            <div className="question-one ml-10">
-              <section>
-                <article className="flex items-center">
-                  <img
-                    src="src/assets/mercy 1.jpg"
-                    alt=""
-                    width={50}
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <h4 className="font-bold">Mercy Ajok</h4>
-                </article>
-                <p className="text-xl p-2 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
-                  My 5 year old has anger outbursts and is always beating his
-                  classmates.Will he outgrow?
-                </p>
-              </section>
-              <section>
-                <article className="flex pt-2 ">
-                  <img
-                    src="src/assets/miranda.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2"
-                  />
-                  <div>
-                    <h4 className="font-bold">Answered by Miranda Atim</h4>
-                    <p>ChildPsychologist</p>
-                  </div>
-                </article>
-
-                <button className="px-8 bg-white ml-4 rounded-md">
-                  View Answer
-                </button>
-              </section>
-            </div>
-            <div className="question-two ml-10 pt-10">
-              <section>
-                <article className="flex items-center">
-                  <img
-                    src="src/assets/rose M.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <h4 className="font-bold">Rose Mary</h4>
-                </article>
-
-                <p className="text-xl p-2 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
-                  My 1 year old is very small, compared to all his agemates and
-                  has no appetite.what should i do?
-                </p>
-              </section>
-              <section>
-                <article className="flex pt-2">
-                  <img
-                    src="src/assets/nutritionist.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <div>
-                    <h4 className="font-bold">Answered by Robinah Kitiibwa</h4>
-                    <p>Nutritionist</p>
-                  </div>
-                </article>
-
-                <button className="px-8 bg-white ml-4 rounded-md">
-                  View Answer
-                </button>
-              </section>
-            </div>
-            <div className="question-two ml-10 pt-10">
-              <section>
-                <article className="flex items-center">
-                  <img
-                    src="src/assets/rose M.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <h4 className="font-bold">Rose Mary</h4>
-                </article>
-
-                <p className="text-xl p-2 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
-                  My 1 year old is very small, compared to all his agemates and
-                  has no appetite.what should i do?
-                </p>
-              </section>
-              <section>
-                <article className="flex pt-2">
-                  <img
-                    src="src/assets/nutritionist.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <div>
-                    <h4 className="font-bold">Answered by Robinah Kitiibwa</h4>
-                    <p>Nutritionist</p>
-                  </div>
-                </article>
-
-                <button className="px-8 bg-white ml-4 rounded-md">
-                  View Answer
-                </button>
-              </section>
-            </div>
-            <div className="question-two ml-10 pt-10">
-              <section>
-                <article className="flex items-center">
-                  <img
-                    src="src/assets/rose M.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <h4 className="font-bold">Rose Mary</h4>
-                </article>
-
-                <p className="text-xl p-2 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
-                  My 1 year old is very small, compared to all his agemates and
-                  has no appetite.what should i do?
-                </p>
-              </section>
-              <section>
-                <article className="flex pt-2">
-                  <img
-                    src="src/assets/nutritionist.jpg"
-                    alt=""
-                    className="rounded-full w-10 h-10 object-cover mr-2 "
-                  />
-                  <div>
-                    <h4 className="font-bold">Answered by Robinah Kitiibwa</h4>
-                    <p>Nutritionist</p>
-                  </div>
-                </article>
-
-                <button className="px-8 bg-white ml-4 rounded-md">
-                  View Answer
-                </button>
-              </section>
-            </div>
+            {questions.map((q, index) => (
+              <div className="question-one ml-10" key={index}>
+                <section>
+                  <article className="flex items-center">
+                    <img
+                      src="src/assets/mercy 1.jpg"
+                      alt="parent image"
+                      width={50}
+                      className="rounded-full w-10 h-10 object-cover mr-2 "
+                    />
+                    <h4 className="font-bold">{q.patientName}</h4>
+                  </article>
+                  <p className="text-xl p-2 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
+                    {q.question}
+                  </p>
+                </section>
+                <section>
+                  <article className="flex pt-2 ">
+                    <img
+                      src={q.doctor.image}
+                      alt="doctor"
+                      className="rounded-full w-10 h-10 object-cover mr-2"
+                    />
+                    <div>
+                      <h4 className="font-bold">{q.doctor.name}</h4>
+                      <p>{q.doctor.specialty}</p>
+                    </div>
+                  </article>
+                  <p className="text-xl p-2 transition ease-in-out delay-70 duration-50">
+                    {q.answer}
+                  </p>
+                </section>
+              </div>
+            ))}
           </div>
         </div>
+
         <div className="experts-section">
           <h1 className="text-2xl ml-6 text-green-900 font-bold mt-8">
             Our Experts
@@ -222,7 +156,7 @@ function AskExp() {
             <section className="mr-3 text-center">
               <img
                 src="src/assets/miranda.jpg"
-                alt=""
+                alt="psychologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
               <p>Dr. Miranda Atim</p>
@@ -231,7 +165,7 @@ function AskExp() {
             <section className="mr-3 text-center">
               <img
                 src="src/assets/nutritionist.jpg"
-                alt=""
+                alt="Nutritionist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
               <p>Dr. Robinah Kitiibwa</p>
@@ -240,25 +174,25 @@ function AskExp() {
             <section className="mr-3 text-center">
               <img
                 src="src/assets/Dr. Celin wangi.jpg"
-                alt=""
+                alt="Midwife image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
-              <p> Celin Wangi</p>
+              <p>Celin Wangi</p>
               <p>Midwife</p>
             </section>
             <section className="mr-3 text-center">
               <img
                 src="src/assets/Dr. Muwanga John.jpg"
-                alt=""
+                alt="Ggnecologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
               <p>Dr. Muwanga John</p>
-              <p>Paediatrician</p>
+              <p>Gynecologist</p>
             </section>
             <section className="mr-3 text-center">
               <img
                 src="src/assets/Dr. Lubanga Cristine.jpg"
-                alt=""
+                alt="Paediatrician image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
               <p>Dr. Lubanga Christine</p>
@@ -271,4 +205,5 @@ function AskExp() {
     </div>
   );
 }
-export default AskExp;
+
+export default AskExpertPage;
