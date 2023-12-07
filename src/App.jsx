@@ -1,19 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Components/Login';
-import Signup from './Components/Signup';
-import ForgotPassword from './Components/ForgotPassword'; 
-
-const App = () => {
+import React from "react";
+import "./App.css";
+import Talk from "./pages/Talk.jsx";
+import Login from "./pages/login.jsx";
+import Nav from "./Components/Nav.jsx";
+function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} /> 
-        <Route path="/*" element={<Login />} /> {/* Default route */}
-      </Routes>
-    </Router>
+    <div className="App">
+      <Talk />
+      <Login />
+    </div>
   );
 }
 
