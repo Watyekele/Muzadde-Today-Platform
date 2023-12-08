@@ -19,16 +19,35 @@ function AskExpertPage() {
   ]);
 
   const [newQuestion, setNewQuestion] = useState('');
+  const [doctorAnswer, setDoctorAnswer] = useState('');
+
+  const loginAsDoctor = () => {
+   return { role: 'doctor' }; 
+  };
 
   const handleAskQuestion = () => {
     const newQuestionObject = {
-      patientName: "Muzadde Today User", // Patient's name can also be based on user input
+      patientName: "Muzadde Today User",
       question: newQuestion,
-      answer: "", // Initialize the answer as an empty string
-      doctor: {}, // The doctor will provide an answer
+      answer: "",
+      doctor: {},
     };
     setQuestions([...questions, newQuestionObject]);
     setNewQuestion('');
+  };
+
+  const handleAnswerQuestion = (index) => {
+    const user = loginAsDoctor();
+    
+    if (user.role === 'doctor') {
+      const updatedQuestions = [...questions];
+      updatedQuestions[index].answer = doctorAnswer;
+      updatedQuestions[index].doctor = { name: "Doctor Name", image: "src/assets/doctor-image.jpg", specialty: "Specialty" };
+      setQuestions(updatedQuestions);
+      setDoctorAnswer('');
+    } else {
+     console.error("Only doctors can provide answers.");
+    }
   };
 
   return (
@@ -58,8 +77,7 @@ function AskExpertPage() {
             <p className="text-2xl  indent-16 font-bold">
               Get prompt advice from doctors and child specialists
             </p>
-            {/* Button and Input Field */}
-            <div className="flex justify-right p-2 m-2">
+          <div className="flex justify-right p-2 m-2">
               <textarea
                 placeholder="Ask a question..."
                 value={newQuestion}
@@ -84,7 +102,7 @@ function AskExpertPage() {
             <button className="bg-gray-200 px-6 py-2 rounded-full mx-2 my-2">
               All
             </button>
-            <button className="bg-gray-200 px-6 py-2rounded-md mx-2 my-2">
+            <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
               Nutrition
             </button>
             <button className="bg-gray-200 px-6 py-2 rounded-md my-2">
@@ -97,7 +115,7 @@ function AskExpertPage() {
               Pediatrician
             </button>
             <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
-              Lactation and Breastfeeding
+              Lactation & Breastfeeding
             </button>
           </section>
           {/* Display Questions and Answers */}
@@ -130,9 +148,27 @@ function AskExpertPage() {
                       <p>{q.doctor.specialty}</p>
                     </div>
                   </article>
-                  <p className="text-xl p-2 transition ease-in-out delay-70 duration-50">
-                    {q.answer}
-                  </p>
+                  {q.answer && (
+                    <p className="text-xl p-2 transition ease-in-out delay-70 duration-50">
+                      {q.answer}
+                    </p>
+                  )}
+                  {!q.answer && (
+                    <div>
+                      <textarea
+                        placeholder="Doctor's answer..."
+                        value={doctorAnswer}
+                        onChange={(e) => setDoctorAnswer(e.target.value)}
+                        className="border p-2"
+                      ></textarea>
+                      <button
+                        onClick={() => handleAnswerQuestion(index)}
+                        className="bg-gray-500 text-white px-6 rounded-md ml-2"
+                      >
+                        Answer
+                      </button>
+                    </div>
+                  )}
                 </section>
               </div>
             ))}
@@ -170,7 +206,7 @@ function AskExpertPage() {
               />
               <p>Dr. Robinah Kitiibwa</p>
               <p>Nutritionist</p>
-            </section>{" "}
+            </section>
             <section className="mr-3 text-center">
               <img
                 src="src/assets/Dr. Celin wangi.jpg"
@@ -183,7 +219,7 @@ function AskExpertPage() {
             <section className="mr-3 text-center">
               <img
                 src="src/assets/Dr. Muwanga John.jpg"
-                alt="Ggnecologist image"
+                alt="Gynecologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
               <p>Dr. Muwanga John</p>
@@ -192,7 +228,7 @@ function AskExpertPage() {
             <section className="mr-3 text-center">
               <img
                 src="src/assets/Dr. Lubanga Cristine.jpg"
-                alt="Paediatrician image"
+                alt="Pediatrician image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
               <p>Dr. Lubanga Christine</p>
