@@ -22,31 +22,46 @@ function AskExpertPage() {
   const [doctorAnswer, setDoctorAnswer] = useState('');
 
   const loginAsDoctor = () => {
-   return { role: 'doctor' }; 
+    return { role: 'doctor' };
   };
 
   const handleAskQuestion = () => {
+    if (newQuestion.trim() === '') {
+      console.error('Question cannot be empty');
+      return;
+    }
+
     const newQuestionObject = {
-      patientName: "Muzadde Today User",
+      patientName: 'Muzadde Today User',
       question: newQuestion,
-      answer: "",
+      answer: '',
       doctor: {},
     };
+
     setQuestions([...questions, newQuestionObject]);
     setNewQuestion('');
   };
 
   const handleAnswerQuestion = (index) => {
+    if (doctorAnswer.trim() === '') {
+      console.error('Answer cannot be empty');
+      return;
+    }
+
     const user = loginAsDoctor();
-    
+
     if (user.role === 'doctor') {
       const updatedQuestions = [...questions];
       updatedQuestions[index].answer = doctorAnswer;
-      updatedQuestions[index].doctor = { name: "Doctor Name", image: "src/assets/doctor-image.jpg", specialty: "Specialty" };
+      updatedQuestions[index].doctor = {
+        name: 'Doctor Name',
+        image: 'src/assets/doctor-image.jpg',
+        specialty: 'Specialty',
+      };
       setQuestions(updatedQuestions);
       setDoctorAnswer('');
     } else {
-     console.error("Only doctors can provide answers.");
+      console.error("Only doctors can provide answers.");
     }
   };
 
@@ -83,6 +98,7 @@ function AskExpertPage() {
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
                 className="border p-2"
+                required // Add the required attribute
               ></textarea>
               <button
                 onClick={handleAskQuestion}
@@ -160,10 +176,12 @@ function AskExpertPage() {
                         value={doctorAnswer}
                         onChange={(e) => setDoctorAnswer(e.target.value)}
                         className="border p-2"
+                        required // Add the required attribute
                       ></textarea>
                       <button
                         onClick={() => handleAnswerQuestion(index)}
                         className="bg-gray-500 text-white px-6 rounded-md ml-2"
+                        disabled={!doctorAnswer.trim()} // Disable the button if answer is empty
                       >
                         Answer
                       </button>
