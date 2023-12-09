@@ -1,7 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [userRole, setUserRole] = useState('parent'); // Set default role to 'parent'
+    const navigate = useNavigate();
+
+    const signupUser = async (name, email, password, userRole) => {
+        
+        console.log('Signing up user:', { name, email, password, userRole });
+        // Simulating an API call with a timeout
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // Resolve the promise after a simulated signup
+                resolve();
+            }, 1000);
+        });
+    };
+
+    const handleSignup = async () => {
+        try {
+            
+            console.log('Selected user role:', userRole);
+
+            await signupUser(name, email, password, userRole);
+            console.log('User signed up successfully!');
+            if (userRole === 'doctor') {
+                navigate('/doctor-dashboard');
+            } else {
+                navigate('/user-dashboard');
+            }
+        } catch (error) {
+            console.error('Error during signup:', error);
+           
+        }
+    };
+
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
@@ -18,8 +54,9 @@ const Signup = () => {
                             id="name"
                             name="name"
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            onChange={(e) => setName(e.target.value)}
                         />
-                         </div>
+                    </div>
                     <div className="mb-2">
                         <label htmlFor="email" className="block text-sm font-semibold text-gray-800">
                             Email
@@ -29,6 +66,7 @@ const Signup = () => {
                             id="email"
                             name="email"
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="mb-2">
@@ -40,13 +78,39 @@ const Signup = () => {
                             id="password"
                             name="password"
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            onChange={(e) => setPassword(e.target.value)}
                         />
+                    </div>
+                    <div className="mb-2">
+                        <label className="block text-sm font-semibold text-gray-800">Type of User</label>
+                        <div className="flex mt-2">
+                            <label className="mr-4">
+                                <input
+                                    type="radio"
+                                    value="parent"
+                                    checked={userRole === 'parent'}
+                                    onChange={() => setUserRole('parent')}
+                                    className="mr-2"
+                                />
+                                Parent
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="doctor"
+                                    checked={userRole === 'doctor'}
+                                    onChange={() => setUserRole('doctor')}
+                                    className="mr-2"
+                                />
+                                Doctor
+                            </label>
+                        </div>
                     </div>
                     <div className="mt-6">
                         <button
                             type="button"
-                            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-pink-600 focus:outline-none focus:bg-purple-600"
-                            onClick={() => console.log("Create Account clicked")} // Replace with any other create account logic
+                            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-600 rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700"
+                            onClick={handleSignup}
                         >
                             Create Account
                         </button>
