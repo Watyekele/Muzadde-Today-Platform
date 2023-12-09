@@ -98,7 +98,7 @@ function AskExpertPage() {
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
                 className="border p-2"
-                required // Add the required attribute
+                required 
               ></textarea>
               <button
                 onClick={handleAskQuestion}
@@ -176,12 +176,12 @@ function AskExpertPage() {
                         value={doctorAnswer}
                         onChange={(e) => setDoctorAnswer(e.target.value)}
                         className="border p-2"
-                        required // Add the required attribute
+                        required 
                       ></textarea>
                       <button
                         onClick={() => handleAnswerQuestion(index)}
                         className="bg-gray-500 text-white px-6 rounded-md ml-2"
-                        disabled={!doctorAnswer.trim()} // Disable the button if answer is empty
+                        disabled={!doctorAnswer.trim()} // Disable button if answer field is empty
                       >
                         Answer
                       </button>
