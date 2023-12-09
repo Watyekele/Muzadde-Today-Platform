@@ -1,6 +1,7 @@
-import Nav from "../Components/Nav";
 import React, { useState } from "react";
+import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
+
 const Talk = () => {
   const [questions, setQuestions] = useState([
     {
@@ -69,10 +70,15 @@ const Talk = () => {
     },
   ]);
 
-  const [newQuestion, setNewQuestion] = useState("");
-  const [newAnswer, setNewAnswer] = useState("");
+  // Use an object to store answers, where keys are question IDs
+  const [newAnswers, setNewAnswers] = useState({});
 
   const addQuestion = () => {
+    if (newAnswers[newQuestion.trim()] === "") {
+      console.error("Question cannot be empty");
+      return;
+    }
+
     const newQuestionObj = {
       id: Date.now(),
       parent: "Muzadde Today User",
@@ -86,6 +92,11 @@ const Talk = () => {
   };
 
   const addAnswer = (questionId) => {
+    if (newAnswers[questionId] === "") {
+      console.error("Answer cannot be empty");
+      return;
+    }
+
     setQuestions((prevQuestions) =>
       prevQuestions.map((question) =>
         question.id === questionId
@@ -96,7 +107,7 @@ const Talk = () => {
                 {
                   id: Date.now(),
                   user: "Muzadde Today User",
-                  answer: newAnswer,
+                  answer: newAnswers[questionId],
                   image: "src/assets/default-avatar.jpg",
                 },
               ],
@@ -105,12 +116,18 @@ const Talk = () => {
       )
     );
 
-    setNewAnswer("");
+    // Clear the answer for the current question
+    setNewAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [questionId]: "",
+    }));
   };
+
+  const [newQuestion, setNewQuestion] = useState("");
 
   return (
     <div className="page">
-      <Nav />{" "}
+      <Nav />
       <div className="container mx-auto p-8">
         <h1 className="text-4xl text-green-900 font-bold mb-4">
           Parent's Talks
@@ -124,11 +141,13 @@ const Talk = () => {
             onChange={(e) => setNewQuestion(e.target.value)}
             placeholder="Ask a question..."
             className="border border-gray-300 p-2 w-full rounded"
+            required
           />
           <div className="flex mt-2 justify-end">
             <button
               onClick={addQuestion}
               className="bg-green-900 text-white p-2 rounded"
+              disabled={!newQuestion.trim()}
             >
               Start Topic
             </button>
@@ -178,13 +197,20 @@ const Talk = () => {
                   <input
                     type="text"
                     placeholder="Your answer..."
-                    value={newAnswer}
-                    onChange={(e) => setNewAnswer(e.target.value)}
+                    value={newAnswers[question.id] || ""}
+                    onChange={(e) =>
+                      setNewAnswers({
+                        ...newAnswers,
+                        [question.id]: e.target.value,
+                      })
+                    }
                     className="border border-gray-300 p-2 flex-1 mr-2 rounded"
+                    required
                   />
                   <button
                     onClick={() => addAnswer(question.id)}
                     className="bg-green-900 text-white p-2 rounded"
+                    disabled={!newAnswers[question.id]?.trim()}
                   >
                     Post Answer
                   </button>
