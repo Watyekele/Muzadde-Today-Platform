@@ -26,7 +26,7 @@ const Details = () => {
   }
   console.log(blog);
   return (
-    <div className="page bg-gray-500/20 h-full mt-2 ">
+    <div className="page bg-gray-500/20 h-full mt-2 rounded-md ">
       <div className="content p-4 pt-4 ">
         <div className="row row2">
           <div className="product-col4">
