@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
+import React, { useState } from "react";
 import Footer from "../Components/Footer";
 
 const Talk = () => {
@@ -71,6 +72,7 @@ const Talk = () => {
   ]);
 
 
+
   const [newAnswers, setNewAnswers] = useState({});
 
   const addQuestion = () => {
@@ -78,6 +80,10 @@ const Talk = () => {
       console.error("Question cannot be empty");
       return;
     }
+  const [newQuestion, setNewQuestion] = useState("");
+  const [newAnswer, setNewAnswer] = useState("");
+
+  const addQuestion = () => {
 
     const newQuestionObj = {
       id: Date.now(),
@@ -92,6 +98,7 @@ const Talk = () => {
   };
 
   const addAnswer = (questionId) => {
+
     if (newAnswers[questionId] === "") {
       console.error("Answer cannot be empty");
       return;
@@ -107,7 +114,11 @@ const Talk = () => {
                 {
                   id: Date.now(),
                   user: "Muzadde Today User",
+
                   answer: newAnswers[questionId],
+
+                  answer: newAnswer,
+
                   image: "src/assets/default-avatar.jpg",
                 },
               ],
@@ -115,6 +126,7 @@ const Talk = () => {
           : question
       )
     );
+
 
     
     setNewAnswers((prevAnswers) => ({
@@ -128,6 +140,14 @@ const Talk = () => {
   return (
     <div className="page">
       <Nav />
+
+    setNewAnswer("");
+  };
+
+  return (
+    <div className="page">
+      <Nav />{" "}
+
       <div className="container mx-auto p-8">
         <h1 className="text-4xl text-green-900 font-bold mb-4">
           Parent's Talks
@@ -141,13 +161,15 @@ const Talk = () => {
             onChange={(e) => setNewQuestion(e.target.value)}
             placeholder="Ask a question..."
             className="border border-gray-300 p-2 w-full rounded"
+
             required
           />
           <div className="flex mt-2 justify-end">
             <button
               onClick={addQuestion}
               className="bg-green-900 text-white p-2 rounded"
-              disabled={!newQuestion.trim()}
+
+              disabled={!newQue
             >
               Start Topic
             </button>
@@ -197,6 +219,7 @@ const Talk = () => {
                   <input
                     type="text"
                     placeholder="Your answer..."
+
                     value={newAnswers[question.id] || ""}
                     onChange={(e) =>
                       setNewAnswers({
@@ -206,11 +229,19 @@ const Talk = () => {
                     }
                     className="border border-gray-300 p-2 flex-1 mr-2 rounded"
                     required
+
+                    value={newAnswer}
+                    onChange={(e) => setNewAnswer(e.target.value)}
+                    className="border border-gray-300 p-2 flex-1 mr-2 rounded"
+
                   />
                   <button
                     onClick={() => addAnswer(question.id)}
                     className="bg-green-900 text-white p-2 rounded"
+
                     disabled={!newAnswers[question.id]?.trim()}
+
+
                   >
                     Post Answer
                   </button>

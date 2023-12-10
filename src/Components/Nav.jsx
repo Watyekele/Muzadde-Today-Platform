@@ -28,14 +28,21 @@ function Nav() {
               <li>
                 <NavLink to="/muzadde-Plus-page">Muzadde-Plus</NavLink>
               </li>
+              <li>
+                <NavLink to="/questions">Questions</NavLink>
+              </li>
             </ul>
           </nav>
         </div>
 
         <div className="flex justify-end items-center m-4 ml-10 w-3/10 gap-4 font-bold ">
-          <button className="bg-gray-500 text-white px-4  rounded h-12 hover:bg-green-200 hover:text-black duration-300 shadow-xl">
-            Log In
-          </button>
+          <Link to="/login">
+            {" "}
+            <button className="bg-gray-500 text-white px-6  rounded h-12 hover:bg-green-200 hover:text-black duration-300 shadow-xl">
+              Log In
+            </button>
+          </Link>
+
           <button className="ml-2 bg-gray-500 text-white px-4  rounded h-12 hover:bg-blue-200 hover:text-white duration-300 shadow-xl">
             Sign Up
           </button>

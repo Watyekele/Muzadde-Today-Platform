@@ -9,6 +9,10 @@ import FAQ from "./pages/Muzadde-Plus-page.jsx";
 import Talk from "./pages/Talk.jsx";
 import AskExp from "./pages/Ask-Expert-Page.jsx";
 import Subscription from "./Components/Subscription.jsx";
+import Questions from "./pages/Questions.jsx";
+
+import Details from "./pages/layouts/Details.jsx";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const appRouter = createBrowserRouter([
   {
@@ -35,10 +39,25 @@ const appRouter = createBrowserRouter([
     path: "/subscription",
     element: <Subscription />,
   },
+
+  {
+    path: "/details/:id",
+    element: <Details />,
+  },
+  {
+    path: "/questions",
+    element: <Questions />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={appRouter} />
-  </React.StrictMode>
+  <Auth0Provider
+    domain="dev-h33vh3ddi3fzu543.us.auth0.com"
+    clientId="eM1czitHknpMztnyra4fXzDQBCsjnOhB"
+    redirectUri={window.location.origin}
+  >
+    <React.StrictMode>
+      <RouterProvider router={appRouter} />
+    </React.StrictMode>
+  </Auth0Provider>
 );
