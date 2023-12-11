@@ -1,7 +1,35 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
+import Search from "../Components/Search";
+
 function Homepage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    // Perform search on your content here
+    // For example, filter content based on the query and update searchResults state
+    // Replace this logic with your own search implementation
+
+    // Example: Searching through an array of content
+    const contentToSearch = [
+      "MUZADDE TODAY",
+      "Is the only parent-focused specialized program",
+      // Add more content as needed
+    ];
+
+    const filteredResults = contentToSearch.filter((content) =>
+      content.toLowerCase().includes(query)
+    );
+
+    setSearchResults(filteredResults);
+  };
+
   return (
     <div>
       <Nav />
@@ -34,6 +62,8 @@ function Homepage() {
                 id="simple-search"
                 className="bg-pink-200 border border-gray-300 text-black text-sm rounded-full py-2 pl-10 pr-4 focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-grey-500/20 dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Type what you are looking for..."
+                value={searchQuery}
+                onChange={handleSearch}
                 required
               />
             </div>
@@ -164,6 +194,11 @@ function Homepage() {
                     "Muzadde plus was a blessing during my wife's pregnancy. We
                     were able to speak to a gynecologist anytime"
                   </p>
+                </div>
+                <div>
+                  {searchResults.length > 0 && (
+                    <Search searchResults={searchResults} />
+                  )}
                 </div>
               </div>
             </div>
