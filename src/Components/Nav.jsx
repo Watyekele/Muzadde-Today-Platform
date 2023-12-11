@@ -28,6 +28,9 @@ function Nav() {
               <li>
                 <NavLink to="/muzadde-Plus-page">Muzadde-Plus</NavLink>
               </li>
+              <li>
+                <NavLink to="/questions">Questions</NavLink>
+              </li>
             </ul>
           </nav>
         </div>

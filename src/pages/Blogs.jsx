@@ -9,6 +9,7 @@ const API_URL = "http://localhost:1337";
 
 function BlogsPage() {
   const [blogs, setBlogs] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -22,56 +23,15 @@ function BlogsPage() {
     };
     fetchBlogs();
   }, []);
-  // const parentBlogPosts = [
-  //   {
-  //     id: 1,
-  //     image: "src/assets/polio treatment.jpg",
-  //     title: "What you need to know about Polio vaccination",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "src/assets/pregnancy.jpg",
-  //     title: "Why you should not wear heels during Pregnancy",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: "src/assets/vaccination.jpg",
-  //     title: "How to prepare your child for vaccination",
-  //     writerImage: "src/assets/download (4).jpg",
-  //     views: 970,
-  //     writerName: "Philip Male",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: "src/assets/Honey.webp",
-  //     title: "Why is it good to take honey during pregnancy",
-  //     writerImage: "src/assets/download (4).jpg",
-  //     views: 970,
-  //     writerName: "Hope Sekabembe",
-  //   },
-  //   {
-  //     id: 5,
-  //     image: "src/assets/painkillers.jpg",
-  //     title: "Why you should not take painkillers during pregnancy",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  //   {
-  //     id: 6,
-  //     image: "src/assets/coconut.jpg",
-  //     title: "Why is coconut water good for your child",
-  //     writerImage: "src/assets/download (8).jpg",
-  //     views: 800,
-  //     writerName: "Rehema Anzo",
-  //   },
-  // ];
+
+  const filterBlogs = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredBlogs =
+    selectedCategory === "All"
+      ? blogs
+      : blogs.filter((blog) => blog.attributes.category === selectedCategory);
   return (
     <div>
       <Nav />
@@ -90,24 +50,36 @@ function BlogsPage() {
         <h2 className="text-2xl text-green-900 font-bold mb-4">
           Parent's Blogs
         </h2>
-        <div className="flex">
-          <button className=" bg-green-900 mr-2 border px-4 py-2 rounded-full">
+        <div className="flex buttons">
+          <button
+            className=" bg-green-900 mr-2 border px-4 py-2 rounded-full"
+            onClick={() => filterBlogs("All")}
+          >
             All
           </button>
-          <button className="mr-2 border px-4 py-2 rounded-r">
+          <button
+            className="mr-2 border px-4 py-2 rounded-r"
+            onClick={() => filterBlogs("Pregnancy")}
+          >
             High Risk Pregnancy
           </button>
-          <button className="mr-2 border px-4 py-2 rounded-r">
+          <button
+            className="mr-2 border px-4 py-2 rounded-r"
+            onClick={() => filterBlogs("Vaccination")}
+          >
             Vaccination
           </button>
           <button className="mr-2 border px-4 py-2 rounded-r">Tests</button>
-          <button className="mr-2 border px-4 py-2 rounded-r">
-            Lactation and Breastfeeding
+          <button
+            className="mr-2 border px-4 py-2 rounded-r"
+            onClick={() => filterBlogs("Nutrition")}
+          >
+            Nutrition
           </button>
         </div>
       </div>
       <div className="flex page grid grid-cols-3">
-        {blogs.map((data, index) => (
+        {filteredBlogs.map((data, index) => (
           <div key={index} className="blogs-card ">
             <Link to={`/details/${data.id}`}>
               <div className="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl m-4 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">

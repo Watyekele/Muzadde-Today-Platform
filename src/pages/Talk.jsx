@@ -70,7 +70,8 @@ const Talk = () => {
     },
   ]);
 
-  // Use an object to store answers, where keys are question IDs
+  const [newQuestion, setNewQuestion] = useState("");
+  const [newAnswer, setNewAnswer] = useState("");
   const [newAnswers, setNewAnswers] = useState({});
 
   const addQuestion = () => {
@@ -107,7 +108,7 @@ const Talk = () => {
                 {
                   id: Date.now(),
                   user: "Muzadde Today User",
-                  answer: newAnswers[questionId],
+                  answer: newAnswer,
                   image: "src/assets/default-avatar.jpg",
                 },
               ],
@@ -116,14 +117,8 @@ const Talk = () => {
       )
     );
 
-    // Clear the answer for the current question
-    setNewAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionId]: "",
-    }));
+    setNewAnswer("");
   };
-
-  const [newQuestion, setNewQuestion] = useState("");
 
   return (
     <div className="page">
@@ -147,7 +142,6 @@ const Talk = () => {
             <button
               onClick={addQuestion}
               className="bg-green-900 text-white p-2 rounded"
-              disabled={!newQuestion.trim()}
             >
               Start Topic
             </button>
