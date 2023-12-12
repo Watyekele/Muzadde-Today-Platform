@@ -121,14 +121,13 @@ const Talk = () => {
   };
 
   return (
-    <div className="page">
+    <div className="page text-lg mt-28">
       <Nav />
       <div className="container mx-auto p-8">
-        <h1 className="text-4xl text-green-900 font-bold mb-4">
-          Parent's Talks
-        </h1>
+        <h1 className="text-4xl text-green-900 font-bold mb-4">Parent's Talks</h1>
         <p className="text-xl text-green-900 font-bold mb-4">Guest Parent</p>
         <p className="mb-4">Share Parenting Advice</p>
+
         {/* New Question */}
         <div className="mb-4">
           <textarea
@@ -149,12 +148,9 @@ const Talk = () => {
         </div>
 
         {/* Displaying Questions and Answers */}
-        <div className="flex flex-wrap">
-          {questions.map((question, index) => (
-            <div
-              key={question.id}
-              className={`mb-8 ${index % 2 === 0 ? "mr-8" : "ml-8"}`}
-            >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {questions.map((question) => (
+            <div key={question.id} className="bg-white p-4 rounded shadow">
               <div className="flex items-center mb-4">
                 <img
                   src={question.image}

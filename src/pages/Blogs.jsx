@@ -1,8 +1,8 @@
-import Footer from "../Components/Footer";
-import Nav from "../Components/Nav";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Nav from "../Components/Nav";
+import Footer from "../Components/Footer";
 import Details from "./layouts/Details";
 
 const API_URL = "http://localhost:1337";
@@ -15,7 +15,6 @@ function BlogsPage() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(`${API_URL}/api/blogs1`);
-        // console.log(response.data.data);
         setBlogs(response.data.data);
       } catch (error) {
         console.error("error fetching blogs data", error);
@@ -32,10 +31,11 @@ function BlogsPage() {
     selectedCategory === "All"
       ? blogs
       : blogs.filter((blog) => blog.attributes.category === selectedCategory);
+
   return (
     <div>
       <Nav />
-      <div className=" page App p-6 bg-pink-50 text-xl">
+      <div className="page text-lg mt-36">
         <h1 className="text-4xl text-green-900 font-bold mb-6 text-left">
           Do You Want to be a Muzadde Today Blogger?
         </h1>
@@ -47,55 +47,53 @@ function BlogsPage() {
           development, and upbringing.
         </p>
 
-        <h2 className="text-2xl text-green-900 font-bold mb-4">
-          Parent's Blogs
-        </h2>
-        <div className="flex buttons">
+        <h2 className="text-2xl text-green-900 font-bold mb-4">Parent's Blogs</h2>
+        <div className="flex flex-wrap justify-start mb-4">
           <button
-            className=" bg-green-900 mr-2 border px-4 py-2 rounded-full"
+            className="bg-green-900 text-white border px-4 py-2 rounded-full mr-2 mb-2"
             onClick={() => filterBlogs("All")}
           >
             All
           </button>
           <button
-            className="mr-2 border px-4 py-2 rounded-r"
+            className="border px-4 py-2 rounded-r mr-2 mb-2"
             onClick={() => filterBlogs("Pregnancy")}
           >
             High Risk Pregnancy
           </button>
           <button
-            className="mr-2 border px-4 py-2 rounded-r"
+            className="border px-4 py-2 rounded-r mr-2 mb-2"
             onClick={() => filterBlogs("Vaccination")}
           >
             Vaccination
           </button>
-          <button className="mr-2 border px-4 py-2 rounded-r">Tests</button>
+          <button className="border px-4 py-2 rounded-r mr-2 mb-2">Tests</button>
           <button
-            className="mr-2 border px-4 py-2 rounded-r"
+            className="border px-4 py-2 rounded-r mr-2 mb-2"
             onClick={() => filterBlogs("Nutrition")}
           >
             Nutrition
           </button>
         </div>
       </div>
-      <div className="flex page grid grid-cols-3">
+      <div className="flex flex-wrap justify-around">
         {filteredBlogs.map((data, index) => (
-          <div key={index} className="blogs-card ">
+          <div key={index} className="blogs-card mb-8 mx-2">
             <Link to={`/details/${data.id}`}>
-              <div className="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl m-4 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
+              <div className="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition ease-in-out duration-200 transform hover:-translate-x-1 hover:scale-90">
                 <img
-                  className="w-full h-48 object-cover  "
+                  className="w-full h-48 object-cover"
                   src={data.attributes.Imagelink}
                   alt={data.attributes.title}
                 />
                 <div className="p-6">
-                  <div className="flex items-left mb-4">
+                  <div className="flex items-center mb-4">
                     <img
-                      className="w-10 h-10 rounded-full mr-4 object-cover "
+                      className="w-10 h-10 rounded-full mr-4 object-cover"
                       src={data.attributes.writerimagelink}
                       alt="Writer"
                     />
-                    <p className="text-gray-900 font-medium  transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-200">
+                    <p className="text-gray-900 font-medium transition ease-in-out duration-200 hover:-translate-x-1 hover:scale-90">
                       {data.attributes.Title}
                     </p>
                   </div>
@@ -111,4 +109,5 @@ function BlogsPage() {
     </div>
   );
 }
+
 export default BlogsPage;
