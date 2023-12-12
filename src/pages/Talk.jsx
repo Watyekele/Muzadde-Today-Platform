@@ -75,7 +75,7 @@ const Talk = () => {
   const [newAnswers, setNewAnswers] = useState({});
 
   const addQuestion = () => {
-    if (newAnswers[newQuestion.trim()] === "") {
+    if (!newQuestion.trim()) {
       console.error("Question cannot be empty");
       return;
     }
@@ -129,7 +129,7 @@ const Talk = () => {
         </h1>
         <p className="text-xl text-green-900 font-bold mb-4">Guest Parent</p>
         <p className="mb-4">Share Parenting Advice</p>
-        {/*New Question */}
+        {/* New Question */}
         <div className="mb-4">
           <textarea
             value={newQuestion}
@@ -167,7 +167,7 @@ const Talk = () => {
                 </div>
               </div>
 
-              {/*Answers */}
+              {/* Answers */}
               <div>
                 <h2 className="text-xl font-bold text-green-900 mb-2">
                   Answers
