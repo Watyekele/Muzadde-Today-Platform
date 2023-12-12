@@ -6,7 +6,7 @@ function Nav() {
       <header className="fixed top-0 w-full z-50 bg-pink-100 border-b-2 border-white rounded-md px-4">
         <div className="w-4/5 m-auto flex justify-between items-center gap-8 my-2">
           <Link to="/" className="text-4xl font-bold">
-            MUZADDE TODAY
+            Muzadde Today
           </Link>
 
           <div className="flex justify-end items-center gap-8 font-bold">
