@@ -109,6 +109,7 @@ function AskExpertPage() {
   return (
     <div>
       <Nav />
+<<<<<<< HEAD
       <div className="page bg-pink-50 text-lg">
         <div>
           <section className="flex bg-zinc-200 w-10/12 pt-2 -mt-4 items-center text-1xl">
@@ -155,11 +156,46 @@ function AskExpertPage() {
         <div>
           <h2 className="text-2xl ml-6 text-green-900 font-bold">
             Top Questions
+=======
+      <div className="page bg-pink-50 text-lg mt-36">
+        <section className="flex bg-zinc-200 w-10/12 pt-2 -mt-4 items-center text-1xl">
+          <img
+            src="src/assets/stetescope.jpg"
+            alt=""
+            width={50}
+            className="mr-2"
+          />
+          <h4 className=" font-bold w-full">
+            96% queries resolved in less than 45 minutes.{" "}
+            <span className="text-blue-800 underline underline-offset-1">
+              Choose a plan
+            </span>{" "}
+            best suited for you
+          </h4>
+        </section>
+        <section className="text-left ml-20 my-10">
+          <h2 className="text-4xl text-green-900 font-bold p-4">
+            Make informed decisions{" "}
+>>>>>>> 87a98cf9ece38eec485a9a17696e55013e13e99e
           </h2>
-          <section className="content-center flex flex-wrap font-bold ">
-            <button className="bg-gray-200 px-6 py-2 rounded-full mx-2 my-2">
-              All
+          <p className="text-2xl  indent-16 font-bold">
+            Get prompt advice from doctors and child specialists
+          </p>
+          <div className="flex justify-right p-2 m-2">
+            <textarea
+              placeholder="Ask a question..."
+              value={newQuestion}
+              onChange={(e) => setNewQuestion(e.target.value)}
+              className="border p-2"
+              required
+            ></textarea>
+            <button
+              onClick={handleAskQuestion}
+              className="bg-blue-500 text-white px-6 rounded-md ml-2"
+            >
+              Ask Now
             </button>
+<<<<<<< HEAD
             <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
               Nutrition
             </button>
@@ -242,7 +278,90 @@ function AskExpertPage() {
                 </section>
               </div>
             ))}
+=======
+>>>>>>> 87a98cf9ece38eec485a9a17696e55013e13e99e
           </div>
+        </section>
+
+        <h2 className="text-2xl ml-6 text-green-900 font-bold">
+          Top Questions
+        </h2>
+        <section className="content-center flex flex-wrap font-bold ">
+          <button className="bg-gray-200 px-6 py-2 rounded-full mx-2 my-2">
+            All
+          </button>
+          <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
+            Nutrition
+          </button>
+          <button className="bg-gray-200 px-6 py-2 rounded-md my-2">
+            Child Psychologist
+          </button>
+          <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
+            Gynecologist
+          </button>
+          <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
+            Pediatrician
+          </button>
+          <button className="bg-gray-200 px-6 py-2 rounded-md mx-2 my-2">
+            Lactation & Breastfeeding
+          </button>
+        </section>
+
+        <div className="questions bg-zinc-200 mt-4 px-auto py-6 rounded-md flex content-center m-auto grid grid-cols-2 items-center ">
+          {questions.map((q, index) => (
+            <div className="question-one ml-10" key={index}>
+              <section>
+                <article className="flex items-center">
+                  <img
+                    src="src/assets/mercy 1.jpg"
+                    alt="parent image"
+                    width={50}
+                    className="rounded-full w-10 h-10 object-cover mr-2 "
+                  />
+                  <h4 className="font-bold">{q.patientName}</h4>
+                </article>
+                <p className="text-xl p-2 transition ease-in-out delay-70  hover:-translate-x-1 hover:scale-90  duration-50">
+                  {q.question}
+                </p>
+              </section>
+              <section>
+                <article className="flex pt-2 ">
+                  <img
+                    src={q.doctor.image}
+                    alt="doctor"
+                    className="rounded-full w-10 h-10 object-cover mr-2"
+                  />
+                  <div>
+                    <h4 className="font-bold">{q.doctor.name}</h4>
+                    <p>{q.doctor.specialty}</p>
+                  </div>
+                </article>
+                {q.answer && (
+                  <p className="text-xl p-2 transition ease-in-out delay-70 duration-50">
+                    {q.answer}
+                  </p>
+                )}
+                {!q.answer && (
+                  <div>
+                    <textarea
+                      placeholder="Doctor's answer..."
+                      value={doctorAnswer}
+                      onChange={(e) => setDoctorAnswer(e.target.value)}
+                      className="border p-2"
+                      required
+                    ></textarea>
+                    <button
+                      onClick={() => handleAnswerQuestion(index)}
+                      className="bg-gray-500 text-white px-6 rounded-md ml-2"
+                      disabled={!doctorAnswer.trim()} // Disable button if answer field is empty
+                    >
+                      Answer
+                    </button>
+                  </div>
+                )}
+              </section>
+            </div>
+          ))}
         </div>
 
         <div className="experts-section">
@@ -306,8 +425,8 @@ function AskExpertPage() {
             </section>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Search from "../Components/Search";
@@ -13,7 +13,6 @@ function Homepage() {
     setSearchQuery(query);
 
     // Perform search on your content here
-    // For example, filter content based on the query and update searchResults state
     // Replace this logic with your own search implementation
 
     // Example: Searching through an array of content
@@ -34,7 +33,7 @@ function Homepage() {
     <div>
       <Nav />
 
-      <div className="page text-lg">
+      <div className="page text-lg mt-32">
         {/* First Container */}
         <div className="bg-gray-300 text-white p-8">
           {/* Search Bar */}
@@ -72,11 +71,11 @@ function Homepage() {
           {/* Text and Images */}
           <div className="flex items-center flex-wrap">
             {/* Text */}
-            <div className="w-1/2 pr-8">
-              <h1 className="text-4xl text-left font-bold text-black mb-4">
+            <div className="w-full md:w-1/2 pr-0 md:pr-8 mb-8 md:mb-0">
+              <h1 className="text-4xl md:text-5xl text-left font-bold text-black mb-4">
                 MUZADDE TODAY
               </h1>
-              <p className="text-4xl font-bold text-black">
+              <p className="text-2xl md:text-4xl font-bold text-black">
                 Is the only parent-focused specialized program
               </p>
             </div>
@@ -86,17 +85,17 @@ function Homepage() {
               <img
                 src="src/assets/IMG-20231126-WA0005.jpg"
                 alt="Family image"
-                className=" w-64 h-64 object-cover rounded-md"
+                className="w-full md:w-64 h-64 object-cover rounded-md"
               />
               <img
                 src="src/assets/IMG-20231124-WA0023.jpg"
                 alt="doctor image"
-                className="w-32 h-64 object-cover rounded-md"
+                className="w-full md:w-32 h-64 object-cover rounded-md"
               />
               <img
                 src="src/assets/IMG-20231124-WA0020.jpg"
                 alt="happy child image"
-                className="w-32 h-64 object-cover rounded-md"
+                className="w-full md:w-32 h-64 object-cover rounded-md"
               />
             </div>
           </div>
@@ -104,7 +103,9 @@ function Homepage() {
 
         {/* Second Container */}
         <div className="bg-pink-50 text-black p-8">
-          <h2 className="text-center font-bold ml-8">What we offer</h2>
+          <h2 className="text-center font-bold mb-4 md:ml-8 md:text-left">
+            What we offer
+          </h2>
           <h2 className="text-3xl text-center font-bold mb-4">
             How are we unique
           </h2>
@@ -153,20 +154,20 @@ function Homepage() {
         </div>
 
         {/* Third Container */}
-        <div className="bg-pink-50 text-black pl-64 py-4 pr-16">
+        <div className="bg-pink-50 text-black pl-8 md:pl-64 py-4 pr-4">
           {/* Image and Text */}
-          <div className="flex items-right">
+          <div className="flex flex-col md:flex-row items-center md:items-start">
             {/* Image */}
-            <div className="w-1/3 ml-8 ">
+            <div className="w-full md:w-1/3 ml-0 md:ml-8">
               <img
                 src="src/assets/IMG-20231124-WA0019.jpg"
                 alt="Testimony"
-                className="rounded-md object-cover w-48 h-96 "
+                className="rounded-md object-cover w-full md:w-48 h-96"
               />
             </div>
 
             {/* Text */}
-            <div className="flex-1 bg-white p-8 -mr-2 ">
+            <div className="flex-1 bg-white p-4 md:p-8 -mr-2">
               <h2 className="text-3xl font-bold mb-4">Testimonies</h2>
               <div className="flex items-center mb-4">
                 <img

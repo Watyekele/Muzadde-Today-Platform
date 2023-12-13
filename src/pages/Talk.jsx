@@ -70,10 +70,16 @@ const Talk = () => {
     },
   ]);
 
-  const [newAnswers, setNewAnswers] = useState({});
   const [newQuestion, setNewQuestion] = useState("");
+  const [newAnswer, setNewAnswer] = useState("");
+  const [newAnswers, setNewAnswers] = useState({});
 
   const addQuestion = () => {
+    if (!newQuestion.trim()) {
+      console.error("Question cannot be empty");
+      return;
+    }
+
     const newQuestionObj = {
       id: Date.now(),
       parent: "Muzadde Today User",
@@ -102,9 +108,7 @@ const Talk = () => {
                 {
                   id: Date.now(),
                   user: "Muzadde Today User",
-
-                  answer: newAnswers[questionId],
-
+                  answer: newAnswer,
                   image: "src/assets/default-avatar.jpg",
                 },
               ],
@@ -113,22 +117,18 @@ const Talk = () => {
       )
     );
 
-    setNewAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionId]: "",
-    }));
+    setNewAnswer("");
   };
 
   return (
-    <div className="page">
-      <Nav />{" "}
+    <div className="page text-lg mt-28">
+      <Nav />
       <div className="container mx-auto p-8">
-        <h1 className="text-4xl text-green-900 font-bold mb-4">
-          Parent's Talks
-        </h1>
+        <h1 className="text-4xl text-green-900 font-bold mb-4">Parent's Talks</h1>
         <p className="text-xl text-green-900 font-bold mb-4">Guest Parent</p>
         <p className="mb-4">Share Parenting Advice</p>
-        {/*New Question */}
+
+        {/* New Question */}
         <div className="mb-4">
           <textarea
             value={newQuestion}
@@ -141,7 +141,6 @@ const Talk = () => {
             <button
               onClick={addQuestion}
               className="bg-green-900 text-white p-2 rounded"
-              disabled={!newQuestion}
             >
               Start Topic
             </button>
@@ -149,12 +148,9 @@ const Talk = () => {
         </div>
 
         {/* Displaying Questions and Answers */}
-        <div className="flex flex-wrap">
-          {questions.map((question, index) => (
-            <div
-              key={question.id}
-              className={`mb-8 ${index % 2 === 0 ? "mr-8" : "ml-8"}`}
-            >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {questions.map((question) => (
+            <div key={question.id} className="bg-white p-4 rounded shadow">
               <div className="flex items-center mb-4">
                 <img
                   src={question.image}
@@ -167,7 +163,7 @@ const Talk = () => {
                 </div>
               </div>
 
-              {/*Answers */}
+              {/* Answers */}
               <div>
                 <h2 className="text-xl font-bold text-green-900 mb-2">
                   Answers

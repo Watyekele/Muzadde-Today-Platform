@@ -15,10 +15,10 @@ const Subscription = () => {
   };
 
   return (
-    <div className="page h-1/4 bg-zinc-200/20" class="background-image">
+    <div className="page h-1/4 bg-zinc-200/20">
       <Nav />
-      <div className="flex flex-col items-center justify-center h-screen">
-        <div className="w-full max-w-md p-6 bg-gray-100 rounded-lg shadow-md h-1/2">
+      <div className="flex flex-col items-center justify-center min-h-screen text-lg mt-16">
+        <div className="w-full max-w-md p-6 bg-gray-100 rounded-lg shadow-md md:h-1/2">
           <h2 className="text-2xl text-green-900 font-bold mb-4">
             Subscribe To Muzadde Plus
           </h2>

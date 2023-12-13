@@ -20,7 +20,6 @@ const faqData = [
     answer:
       "You will get feedback from a specialist within less than 45 minutes",
   },
-  //  We can add more FAQ items here
 ];
 
 const FAQ = ({ data }) => {
@@ -32,9 +31,8 @@ const FAQ = ({ data }) => {
 
   return (
     <div>
-      {" "}
       <Nav />
-      <div className="flex flex-col items-center max-w-screen-md mx-auto text-xl bg-zinc-300/20 p-10 rounded-md">
+      <div className="page text-lg mt-16 md:mt-32 flex flex-col items-center max-w-screen-md mx-auto bg-zinc-300/20 p-10 rounded-md">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-green-900">
             Upgrade to Muzadde Plus
@@ -74,7 +72,7 @@ const FAQ = ({ data }) => {
         ))}
         <div className="mt-8">
           {/* Use of the Link component makes the button clickable */}
-          <Link to="/subscription">
+          <Link to="/Subscription">
             <button className="bg-green-900 text-white py-2 px-4 rounded hover:bg-pink-500 focus:outline-none focus:shadow-outline-blue">
               Upgrade Now
             </button>
