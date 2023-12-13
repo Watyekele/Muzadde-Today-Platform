@@ -6,76 +6,85 @@ import axios from "axios";
 const Talk = () => {
   const [questions, setQuestions] = useState([]);
   const [newQuestion, setNewQuestion] = useState("");
-  const [newAnswer, setNewAnswer] = useState("");
+  const [newAnswer, setNewAnswer] = useState({});
   const [askedQuestion, setAskedQuestion] = useState(null);
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    // Fetch Questions from Strapi API
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:1337/api/questions3"
-        );
-        setQuestions(response.data.data);
-      } catch (error) {
-        console.error("Error fetching questions", error);
-      }
-    };
-
     fetchQuestions();
+    fetchAnswers();
   }, []);
+
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:1337/api/talkquestions"
+      );
+
+      setQuestions(response.data.data); // Assuming response.data is the array you provided
+    } catch (error) {
+      console.error("Error fetching questions", error);
+    }
+  };
+
+  const fetchAnswers = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:1337/api/talkanswers?populate=*"
+      );
+
+      setAnswers(response.data.data); // Assuming response.data is the array you provided
+    } catch (error) {
+      console.error("Error fetching answers", error);
+    }
+  };
 
   const addQuestion = async () => {
     try {
-      // Send POST request to add question to Strapi
       const response = await axios.post(
-        "http://localhost:1337/api/questions3",
-
+        "http://localhost:1337/api/talkquestions",
         {
           data: {
             Parent: "Famba AbdulN",
-            question: "Whats up",
-            imageLink: "cccxvggrtddfshhss",
+            question: newQuestion,
+            imageLink:
+              "https://parentsofblackchildren.org/wp-content/uploads/2021/09/parents-of-black-children-colleen.jpg",
           },
         }
-        // {
-        //   Parent: "Sarah",
-        //   question: newQuestion,
-        //   imageLink: "",
-
-        //   // Add other fields as needed
-        // }
       );
 
-      // Set the asked question after posting it
+      await fetchQuestions();
 
-      setAskedQuestion(response.data);
-
-      //Clear the New Question textarea
       setNewQuestion("");
     } catch (error) {
       console.error("Error adding question", error);
     }
   };
 
-  const addAnswer = async () => {
+  const addAnswer = async (questionId) => {
     try {
-      // Send POST request to add answer to the asked question
-      await axios.post(
-        `http://localhost:1337/questions1/${askedQuestion.id}/answers1`,
+      const response = await axios.post(
+        "http://localhost:1337/api/talkanswers",
         {
-          answerText: newAnswer,
-          // Add other fields as needed
+          data: {
+            User: "Joan",
+            imageLink:
+              "https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/field_blog_entry_images/2021-09/andrae-ricketts-3qi0pkm_wes-unsplash.jpg?itok=jUtH8qgq",
+            answer: newAnswer[questionId], // Retrieve the answer for the specific question ID
+          },
         }
       );
 
-      // Fetch the updated asked question with answers
-      const response = await axios.get(
-        `http://localhost:1337/api/questions1/${askedQuestion.id}`
-      );
-      setAskedQuestion(response.data.data);
+      await fetchAnswers(); // Fetch updated answers
 
-      setNewAnswer("");
+      // Clear the newAnswer state for the specific question ID
+      setNewAnswer({
+        ...newAnswer,
+        [questionId]: "", // Clear the input field after posting the answer
+      });
+
+      // Refresh the questions after posting the answer
+      await fetchQuestions();
     } catch (error) {
       console.error("Error adding answer", error);
     }
@@ -90,7 +99,6 @@ const Talk = () => {
         </h1>
         <p className="text-xl text-green-900 font-bold mb-4">Guest Parent</p>
         <p className="mb-4">Share Parenting Advice</p>
-
         {/* New Question */}
         <div className="mb-4">
           <textarea
@@ -108,63 +116,78 @@ const Talk = () => {
             </button>
           </div>
         </div>
-
-        {/* Display Asked Question and Answers */}
-        {askedQuestion && (
-          <div>
-            <div className="flex items-center mb-4">
-              <img
-                src={askedQuestion.imageLink}
-                alt={`Parent ${askedQuestion.Parent}`}
-                className="rounded-full w-16 h-16 mr-4"
-              />
-              <div>
-                <p className="font-bold">{askedQuestion.Parent}</p>
-                <p>{askedQuestion.question}</p>
-              </div>
-            </div>
-
-            {/* Display Answers */}
-            {askedQuestion.answers && askedQuestion.answers.length > 0 ? (
-              <div>
-                <h2 className="text-xl font-bold text-green-900 mb-2">
-                  Answers
-                </h2>
-                {askedQuestion.answers.map((answer) => (
-                  <div key={answer.id} className="flex items-center mb-2">
-                    <img
-                      src={answer.imageLink}
-                      alt={`User ${answer.user}`}
-                      className="rounded-full w-10 h-10 mr-2"
-                    />
-                    <div>
-                      <p className="font-bold">{answer.user}</p>
-                      <p>{answer.answer}</p>
-                    </div>
+        {questions.length > 0 ? (
+          <div className="flex flex-wrap">
+            {questions.map((question) => (
+              <div key={question.id} className="mb-8">
+                {/* Display the question */}
+                <div className="flex items-center mb-4">
+                  <img
+                    src={question.attributes.imageLink}
+                    alt={`Parent ${question.attributes.Parent}`}
+                    className="rounded-full w-16 h-16 mr-4"
+                  />
+                  <div>
+                    <p className="font-bold">{question.attributes.Parent}</p>
+                    <p>{question.attributes.question}</p>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <p>No answers available for this question.</p>
-            )}
+                </div>
 
-            {/* Post Answer */}
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="Your answer..."
-                value={newAnswer}
-                onChange={(e) => setNewAnswer(e.target.value)}
-                className="border border-gray-300 p-2 flex-1 mr-2 rounded"
-              />
-              <button
-                onClick={addAnswer}
-                className="bg-green-900 text-white p-2 rounded"
-              >
-                Post Answer
-              </button>
-            </div>
+                {/* Answers */}
+                <div>
+                  <h2 className="text-xl font-bold text-green-900 mb-2">
+                    Answers
+                  </h2>
+                  {/* Filter answers for the current question */}
+                  {answers
+                    .filter(
+                      (answer) =>
+                        answer.attributes.talkquestion &&
+                        answer.attributes.talkquestion.data &&
+                        answer.attributes.talkquestion.data.id === question.id
+                    )
+                    .map((answer) => (
+                      <div key={answer.id} className="flex items-center mb-2">
+                        <img
+                          src={answer.attributes.imageLink}
+                          alt={`User ${answer.attributes.User}`}
+                          className="rounded-full w-10 h-10 mr-2"
+                        />
+                        <div>
+                          <p className="font-bold">{answer.attributes.User}</p>
+                          <p>{answer?.attributes?.answer}</p>
+                        </div>
+                      </div>
+                    ))}
+
+                  {/* Post Answer */}
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Your answer..."
+                      value={newAnswer[question.id] || ""}
+                      onChange={(e) =>
+                        setNewAnswer({
+                          ...newAnswer,
+                          [question.id]: e.target.value,
+                        })
+                      }
+                      className="border border-gray-300 p-2 flex-1 mr-2 rounded"
+                    />
+                    <button
+                      onClick={() => addAnswer(question.id)}
+                      className="bg-green-900 text-white p-2 rounded"
+                      disabled={!newAnswer[question.id]?.trim()}
+                    >
+                      Post Answer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+        ) : (
+          <p>No questions available</p>
         )}
       </div>
       <Footer />
