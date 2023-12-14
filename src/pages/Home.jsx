@@ -25,7 +25,7 @@ function Homepage() {
             {/* Images */}
             <div className="flex-1 flex flex-wrap justify-center space-x-4">
               <img
-                src="../../public/IMG-20231126-WA0005.jpg"
+                src="https://asset.cloudinary.com/dduq8wrev/732d803c8f67f498c251c7e26fb63881"
                 alt="Family image"
                 className="w-full md:w-64 h-64 object-cover rounded-md"
               />
