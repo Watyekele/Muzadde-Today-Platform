@@ -121,10 +121,12 @@ const Talk = () => {
   };
 
   return (
-    <div className="page text-lg mt-16 bg-gray-100">
+    <div className=" text-lg mt-16 bg-gray-100 ">
       <Nav />
-      <div className="container mx-auto p-4 md:p-8 lg:p-12">
-        <h1 className="text-4xl text-green-900 font-bold mb-4">Parent's Talks</h1>
+      <div className=" pl-16 pr-16 md:p-8 lg:p-12">
+        <h1 className="text-4xl text-green-900 font-bold mb-4">
+          Parent's Talks
+        </h1>
         <p className="text-xl text-green-900 font-bold mb-4">Guest Parent</p>
         <p className="mb-4 text-gray-700">Share Parenting Advice</p>
 
@@ -140,7 +142,7 @@ const Talk = () => {
           <div className="flex mt-2 justify-end">
             <button
               onClick={addQuestion}
-              className="bg-green-900 text-white p-2 rounded hover:bg-green-700 focus:outline-none"
+              className="bg-green-900/80 text-white p-2 rounded hover:bg-green-700 focus:outline-none"
             >
               Start Topic
             </button>
@@ -199,7 +201,7 @@ const Talk = () => {
                   />
                   <button
                     onClick={() => addAnswer(question.id)}
-                    className="bg-green-900 text-white p-2 rounded hover:bg-green-700 focus:outline-none"
+                    className="bg-green-900/80 text-white p-2 rounded hover:bg-green-700 focus:outline-none"
                     disabled={!newAnswers[question.id]?.trim()}
                   >
                     Post Answer

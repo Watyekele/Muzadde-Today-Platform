@@ -48,7 +48,7 @@ const FAQ = ({ data }) => {
             <li className="mb-2">Unlimited Q&A with child Experts</li>
             <li className="mb-2">VIP access to all workshops</li>
             <li className="mb-2">
-              Ability to ask questions and be answered by fellow parents
+              Covenient appointments with medical professionals
             </li>
           </ul>
         </div>
@@ -71,7 +71,7 @@ const FAQ = ({ data }) => {
             {activeIndex === index && <div className="py-4">{item.answer}</div>}
           </div>
         ))}
-        
+
         <div className="mt-4 md:mt-8">
           {/* Use of the Link component makes the button clickable */}
           <Link to="/Subscription">

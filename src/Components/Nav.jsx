@@ -2,13 +2,13 @@ import { NavLink, Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <header className="fixed top-0 w-full z-50 bg-white border-b-2 border-gray-300 shadow-md">
-      <div className="container mx-auto flex justify-between items-center h-16">
-        <Link to="/" className="text-3xl font-bold text-gray-800">
+    <header className="fixed top-0 m-auto w-full   bg-white border-b-2 border-gray-300 shadow-md">
+      <div className="container mx-16 justify-evenly flex  items-center h-16">
+        <Link to="/" className="text-3xl font-bold  ml-2 pl-2 text-gray-800">
           Muzadde Today
         </Link>
 
-        <nav className="flex items-center gap-8 font-bold">
+        <nav className="flex items-center gap-8 font-bold pl-20">
           <ul className="flex list-none gap-8 text-lg items-center">
             <li>
               <NavLink

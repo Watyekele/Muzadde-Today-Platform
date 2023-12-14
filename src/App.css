@@ -1,11 +1,49 @@
+header {
+  width: 80%;
+  margin: auto;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #e57c23;
+}
 
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+li a {
+  text-decoration: none;
+  /* color: #f8f1f1; */
+}
+
+li a:hover {
+  text-decoration: underline;
+  color: #025464;
+}
+
+.page {
+  width: 80%;
+  margin: auto;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+.page p {
+  font-weight: 300;
+  width: 60%;
+}
+.background-image {
+  width: 100%;
+  margin: auto;
+  background-image: url();
+  background-repeat: no-repeat;
+  background-position: cover;
 }
 
 .container {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 8px;  
+  padding-left: 3%;
+  padding-right: 3%;
 }
