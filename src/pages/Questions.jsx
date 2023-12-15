@@ -155,7 +155,11 @@ const Talk = () => {
                         />
                         <div>
                           <p className="font-bold">{answer.attributes.User}</p>
+<<<<<<< HEAD
                           <p>{answer?.attributes?.answer}</p>
+=======
+                          <p>{answer.attributes.answer}</p>
+>>>>>>> 3b2fff74acffcec61bb6d2be5b08d245852e7c3b
                         </div>
                       </div>
                     ))}

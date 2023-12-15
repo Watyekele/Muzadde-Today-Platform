@@ -2,59 +2,79 @@ import { NavLink, Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <div>
-      <header className=" w-4/5 m-auto flex justify-between text-center items-center gap-8 bg-pink-100 my-2 border-2 border-white  rounded-md px-4">
-        <Link to="/">
-          <div className="logo font-bold text-2xl">
-            Muzadde <span className="text-green-900">Today</span>
-          </div>
+    <header className="fixed top-0 m-auto w-full   bg-white border-b-2 border-gray-300 shadow-md">
+      <div className="container mx-16 justify-evenly flex  items-center h-16">
+        <Link to="/" className="text-3xl font-bold  ml-2 pl-2 text-gray-800">
+          Muzadde Today
         </Link>
 
-        <div>
-          <nav>
-            <ul className="flex flex-wrap list-none justify-center gap-8 text-3xl ">
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/askExp">Ask-Expert</NavLink>
-              </li>
-              <li>
-                <NavLink to="/talk">Talk</NavLink>
-              </li>
-              <li>
-                <NavLink to="/blogs">Blogs</NavLink>
-              </li>
-              <li>
-                <NavLink to="/muzadde-Plus-page">Muzadde-Plus</NavLink>
-              </li>
-              <li>
-                <NavLink to="/questions">Questions</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <nav className="flex items-center gap-8 font-bold pl-20">
+          <ul className="flex list-none gap-8 text-lg items-center">
+            <li>
+              <NavLink
+                exact
+                to="/"
+                className="text-gray-700 hover:text-blue-500"
+                activeClassName="border-b-2 border-blue-500"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/askExp"
+                className="text-gray-700 hover:text-blue-500"
+                activeClassName="border-b-2 border-blue-500"
+              >
+                Ask-Expert
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/talk"
+                className="text-gray-700 hover:text-blue-500"
+                activeClassName="border-b-2 border-blue-500"
+              >
+                Talk
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/blogs"
+                className="text-gray-700 hover:text-blue-500"
+                activeClassName="border-b-2 border-blue-500"
+              >
+                Blogs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/muzadde-Plus-page"
+                className="text-gray-700 hover:text-blue-500"
+                activeClassName="border-b-2 border-blue-500"
+              >
+                Muzadde-Plus
+              </NavLink>
+            </li>
+          </ul>
 
-        <div className="flex justify-end items-center m-4 ml-10 w-3/10 gap-4 font-bold ">
-          <Link to="/login">
-            {" "}
-            <button className="bg-gray-500 text-white px-6  rounded h-12 hover:bg-green-200 hover:text-black duration-300 shadow-xl">
-              Log In
-            </button>
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/login">
+              <button className="text-white bg-gray-500 px-6 py-2 rounded hover:bg-green-200 hover:text-black transition duration-300 shadow-md">
+                Log In
+              </button>
+            </Link>
 
-          <button className="ml-2 bg-gray-500 text-white px-4  rounded h-12 hover:bg-blue-200 hover:text-white duration-300 shadow-xl">
-            Sign Up
-          </button>
-        </div>
-      </header>
-
-      {/* <Routes>
-          <Route path="/Blogs" element={<Blogs />} />
-          <Route path="/" element={<Homepage />} />
-          <Route path="/FAQ" element={<FAQ />} />
-        </Routes> */}
-    </div>
+            <Link to="/signup">
+              <button className="text-white bg-gray-500 px-4 py-2 rounded hover:bg-blue-200 hover:text-white transition duration-300 shadow-md">
+                Sign Up
+              </button>
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </header>
   );
 }
+
 export default Nav;

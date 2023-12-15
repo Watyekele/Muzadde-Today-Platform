@@ -10,6 +10,9 @@ import Talk from "./pages/Talk.jsx";
 import AskExp from "./pages/Ask-Expert-Page.jsx";
 import Subscription from "./Components/Subscription.jsx";
 import Questions from "./pages/Questions.jsx";
+import Login from "./Components/Login.jsx";
+import Signup from "./Components/Signup.jsx";
+import ForgotPassword from "./Components/Forgotpassword.jsx";
 
 import Details from "./pages/layouts/Details.jsx";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -47,6 +50,18 @@ const appRouter = createBrowserRouter([
   {
     path: "/questions",
     element: <Questions />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPassword />,
   },
 ]);
 

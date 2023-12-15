@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 export default function Login() {
@@ -5,13 +6,31 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const { loginWithRedirect } = useAuth0(); // Use loginWithRedirect
+=======
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+
+>>>>>>> 3b2fff74acffcec61bb6d2be5b08d245852e7c3b
   const { loginWithRedirect } = useAuth0(); // loginWithRedirect
 
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
   };
+<<<<<<< HEAD
   const handleLogin = () => {
     console.log("Logging in with:", { email, password, rememberMe });
+=======
+
+  const handleLogin = () => {
+    console.log("Logging in with:", { email, password, rememberMe });
+
+>>>>>>> 3b2fff74acffcec61bb6d2be5b08d245852e7c3b
     // If "Remember Me" is checked, store a flag in local storage
     if (rememberMe) {
       localStorage.setItem("rememberMe", "true");
@@ -19,10 +38,18 @@ export default function Login() {
       localStorage.removeItem("rememberMe");
     }
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b2fff74acffcec61bb6d2be5b08d245852e7c3b
   const handleLoginWithAuth0 = () => {
     // Redirect to Auth0 login page
     loginWithRedirect();
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b2fff74acffcec61bb6d2be5b08d245852e7c3b
   return (
     <div className="relative flex flex-col lg:flex-row justify-center min-h-screen overflow-hidden">
       <div className="lg:w-1/2 w-full p-6 m-auto bg-white rounded-md shadow-xl">
@@ -124,6 +151,12 @@ export default function Login() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 
   return <div>Login</div>;
 }
+=======
+}
+
+export default Login;
+>>>>>>> 3b2fff74acffcec61bb6d2be5b08d245852e7c3b

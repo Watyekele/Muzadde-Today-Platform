@@ -36,7 +36,7 @@ function BlogsPage() {
     <div>
       <Nav />
       <div className=" page App p-6 bg-pink-50 text-xl">
-        <h1 className="text-4xl text-green-900 font-bold mb-6 text-left">
+        <h1 className="text-4xl text-green-900 font-bold mt-16 mb-6 text-left">
           Do You Want to be a Muzadde Today Blogger?
         </h1>
         <p className="mb-4 text-left">

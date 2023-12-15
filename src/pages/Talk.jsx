@@ -70,10 +70,16 @@ const Talk = () => {
     },
   ]);
 
-  const [newAnswers, setNewAnswers] = useState({});
   const [newQuestion, setNewQuestion] = useState("");
+  const [newAnswer, setNewAnswer] = useState("");
+  const [newAnswers, setNewAnswers] = useState({});
 
   const addQuestion = () => {
+    if (!newQuestion.trim()) {
+      console.error("Question cannot be empty");
+      return;
+    }
+
     const newQuestionObj = {
       id: Date.now(),
       parent: "Muzadde Today User",
@@ -102,9 +108,7 @@ const Talk = () => {
                 {
                   id: Date.now(),
                   user: "Muzadde Today User",
-
-                  answer: newAnswers[questionId],
-
+                  answer: newAnswer,
                   image: "src/assets/default-avatar.jpg",
                 },
               ],
@@ -113,35 +117,32 @@ const Talk = () => {
       )
     );
 
-    setNewAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionId]: "",
-    }));
+    setNewAnswer("");
   };
 
   return (
-    <div className="page">
-      <Nav />{" "}
-      <div className="container mx-auto p-8">
+    <div className=" text-lg mt-16 bg-gray-100 ">
+      <Nav />
+      <div className=" pl-16 pr-16 md:p-8 lg:p-12">
         <h1 className="text-4xl text-green-900 font-bold mb-4">
           Parent's Talks
         </h1>
         <p className="text-xl text-green-900 font-bold mb-4">Guest Parent</p>
-        <p className="mb-4">Share Parenting Advice</p>
-        {/*New Question */}
+        <p className="mb-4 text-gray-700">Share Parenting Advice</p>
+
+        {/* New Question */}
         <div className="mb-4">
           <textarea
             value={newQuestion}
             onChange={(e) => setNewQuestion(e.target.value)}
             placeholder="Ask a question..."
-            className="border border-gray-300 p-2 w-full rounded"
+            className="border border-gray-300 p-2 w-full rounded focus:outline-none focus:border-green-500"
             required
           />
           <div className="flex mt-2 justify-end">
             <button
               onClick={addQuestion}
-              className="bg-green-900 text-white p-2 rounded"
-              disabled={!newQuestion}
+              className="bg-green-900/80 text-white p-2 rounded hover:bg-green-700 focus:outline-none"
             >
               Start Topic
             </button>
@@ -149,12 +150,9 @@ const Talk = () => {
         </div>
 
         {/* Displaying Questions and Answers */}
-        <div className="flex flex-wrap">
-          {questions.map((question, index) => (
-            <div
-              key={question.id}
-              className={`mb-8 ${index % 2 === 0 ? "mr-8" : "ml-8"}`}
-            >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {questions.map((question) => (
+            <div key={question.id} className="bg-white p-4 rounded shadow mb-4">
               <div className="flex items-center mb-4">
                 <img
                   src={question.image}
@@ -163,11 +161,11 @@ const Talk = () => {
                 />
                 <div>
                   <p className="font-bold">{question.parent}</p>
-                  <p>{question.question}</p>
+                  <p className="text-gray-700">{question.question}</p>
                 </div>
               </div>
 
-              {/*Answers */}
+              {/* Answers */}
               <div>
                 <h2 className="text-xl font-bold text-green-900 mb-2">
                   Answers
@@ -181,13 +179,13 @@ const Talk = () => {
                     />
                     <div>
                       <p className="font-bold">{answer.user}</p>
-                      <p>{answer.answer}</p>
+                      <p className="text-gray-700">{answer.answer}</p>
                     </div>
                   </div>
                 ))}
 
                 {/* Post Answer */}
-                <div className="flex">
+                <div className="flex mt-2">
                   <input
                     type="text"
                     placeholder="Your answer..."
@@ -198,12 +196,12 @@ const Talk = () => {
                         [question.id]: e.target.value,
                       })
                     }
-                    className="border border-gray-300 p-2 flex-1 mr-2 rounded"
+                    className="border border-gray-300 p-2 flex-1 mr-2 rounded focus:outline-none focus:border-green-500"
                     required
                   />
                   <button
                     onClick={() => addAnswer(question.id)}
-                    className="bg-green-900 text-white p-2 rounded"
+                    className="bg-green-900/80 text-white p-2 rounded hover:bg-green-700 focus:outline-none"
                     disabled={!newAnswers[question.id]?.trim()}
                   >
                     Post Answer

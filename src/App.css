@@ -38,7 +38,12 @@ li a:hover {
 .background-image {
   width: 100%;
   margin: auto;
-  background-image: url(src/assets/africanchild.jpg);
+  background-image: url();
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: cover;
+}
+
+.container {
+  padding-left: 3%;
+  padding-right: 3%;
 }
