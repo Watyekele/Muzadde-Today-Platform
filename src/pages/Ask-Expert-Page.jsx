@@ -23,9 +23,9 @@ function AskExpertPage() {
     axios
       .get(QUESTIONS_ENDPOINT)
       .then((response) => {
-        if (Array.isArray(response.data.data)) {
-          // console.log(response.data.data);
-          setQuestions(response.data.data);
+        if (Array.isArray(response.data)) {
+          console.log(response.data);
+          setQuestions(response.data);
         } else {
           console.error("Invalid data format - Expected an array.");
         }
@@ -35,7 +35,7 @@ function AskExpertPage() {
       });
   };
 
- // Function to add a new question to Strapi
+  // Function to add a new question to Strapi
   const addQuestion = (newQuestion) => {
     axios
       .post(QUESTIONS_ENDPOINT, newQuestion)
@@ -182,12 +182,7 @@ function AskExpertPage() {
               <div className="question-one ml-10" key={index}>
                 <section>
                   <article className="flex items-center">
-                    <img
-                      src={question.attributes.imageLink}
-                      alt="parentimage"
-                      width={50}
-                      className="rounded-full w-10 h-10 object-cover mr-2"
-                    />
+                    {/* ... */}
                     <h4 className="font-bold">{question.attributes.Name}</h4>
                   </article>
                   <p className="text-xl p-2 transition ease-in-out delay-70 hover:-translate-x-1 hover:scale-90 duration-50">
@@ -196,48 +191,25 @@ function AskExpertPage() {
                 </section>
                 <section>
                   {/* Display expert's answer */}
-                  {question.attributes.expanswer ? (
+                  {question.attributes.expanswer &&
+                  question.attributes.expanswer.data ? (
                     <article className="flex pt-2">
-                      <img
-                        src={
+                      {/* ... */}
+                      <h4 className="font-bold">
+                        {
                           question.attributes.expanswer.data.attributes
-                            .imageLink
+                            .expertName
                         }
-                        alt="Doctor"
-                        className="rounded-full w-10 h-10 object-cover mr-2"
-                      />
-                      <div>
-                        <h4 className="font-bold">
-                          {
-                            question.attributes.expanswer.data.attributes
-                              .expertName
-                          }
-                        </h4>
-                        <p className="text-xl p-2 transition ease-in-out delay-70 duration-50">
-                          {question.attributes.expanswer.data.attributes.answer}
-                        </p>
-                      </div>
+                      </h4>
+                      <p className="text-xl p-2 transition ease-in-out delay-70 duration-50">
+                        {question.attributes.expanswer.data.attributes.answer}
+                      </p>
                     </article>
                   ) : (
                     // Display input field for doctor's answer if the question is unanswered
-                    <div>
-                      <textarea
-                        placeholder="Doctor's answer..."
-                        value={doctorAnswer}
-                        onChange={(e) => setDoctorAnswer(e.target.value)}
-                        className="border p-2"
-                        required
-                      ></textarea>
-                      <button
-                        onClick={() =>
-                          handleAnswerQuestion(question.id, doctorAnswer)
-                        }
-                        className="bg-gray-500 text-white px-6 rounded-md ml-2"
-                        disabled={!doctorAnswer.trim()} // Disable button if answer field is empty
-                      >
-                        Answer
-                      </button>
-                    </div>
+                    {
+                      /* ... */
+                    }
                   )}
                 </section>
               </div>
