@@ -25,17 +25,17 @@ function Homepage() {
             {/* Images */}
             <div className="flex-1 flex flex-wrap justify-center space-x-4">
               <img
-                src="src/assets/IMG-20231124-WA0021.jpg"
+                src="/IMG-20231126-WA0005.jpg"
                 alt="Family image"
                 className="w-full md:w-64 h-64 object-cover rounded-md"
               />
               <img
-                src="src/assets/IMG-20231124-WA0023.jpg"
+                src="/IMG-20231124-WA0023.jpg"
                 alt="doctor image"
                 className="w-full md:w-32 h-64 object-cover rounded-md"
               />
               <img
-                src="src/assets/IMG-20231124-WA0020.jpg"
+                src="/IMG-20231124-WA0020.jpg"
                 alt="happy child image"
                 className="w-full md:w-32 h-64 object-cover rounded-md"
               />
