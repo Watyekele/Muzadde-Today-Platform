@@ -15,7 +15,7 @@ const Subscription = () => {
   };
 
   return (
-    <div className="page h-3/4 bg-zinc-200/20">
+    <div className="page h-3/4 bg-zinc-200/20 background-image">
       <Nav />
       <div className="flex flex-col items-center justify-center min-h-screen text-lg mt-16">
         <div className="w-full max-w-md p-6 bg-gray-100 rounded-lg shadow-md md:h-3/4 mb-4">

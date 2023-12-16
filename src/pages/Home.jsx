@@ -25,7 +25,7 @@ function Homepage() {
             {/* Images */}
             <div className="flex-1 flex flex-wrap justify-center space-x-4">
               <img
-                src="src/assets/IMG-20231126-WA0005.jpg"
+                src="src/assets/IMG-20231124-WA0021.jpg"
                 alt="Family image"
                 className="w-full md:w-64 h-64 object-cover rounded-md"
               />
@@ -45,7 +45,7 @@ function Homepage() {
 
         {/* Second Container */}
         <div className="bg-pink-50 text-black p-8">
-          <h2 className="text-center font-bold mb-4 md:ml-8 md:text-left">
+          <h2 className="text-center  font-bold mb-4 md:ml-8 ">
             What we offer
           </h2>
           <h2 className="text-3xl text-center font-bold mb-4">

@@ -30,14 +30,14 @@ const Details = () => {
       <div className="content p-4 pt-4 ">
         <div className="row row2">
           <div className="product-col4">
-            <h1 className="text-center text-4xl mb-4 font-bold">
-              {blog.Title}
-            </h1>
             <img
               src={blog.Imagelink}
               alt={blog.Title}
-              className="w-96 m-4 rounded-lg"
+              className=" w-96 m-4 rounded-lg object-fit"
             />
+            <h1 className="text-center text-6xl mb-4 font-bold">
+              {blog.Title}
+            </h1>
           </div>
           <div className="col-single text-2xl">{blog.Content}</div>
         </div>

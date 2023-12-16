@@ -1,14 +1,36 @@
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Nav() {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-white border-b-2 border-gray-300 shadow-md">
-      <div className="container mx-auto flex justify-between items-center h-16">
-        <Link to="/" className="text-3xl font-bold text-gray-800">
+    <header className="fixed top-0 m-auto w-full bg-white border-b-2 border-gray-300 shadow-md">
+      <div className="container mx-16 justify-between flex items-center h-16">
+        <Link to="/" className="text-3xl font-bold ml-2 pl-2 text-gray-800">
           Muzadde Today
         </Link>
 
-        <nav className="flex items-center gap-8 font-bold">
+        {/* Hamburger Menu Button */}
+        <div className="lg:hidden">
+          {isMenuOpen ? (
+            <FaTimes onClick={toggleMenu} className="text-2xl" />
+          ) : (
+            <FaBars onClick={toggleMenu} className="text-2xl" />
+          )}
+        </div>
+
+        {/* Navigation Links */}
+        <nav
+          className={`${
+            isMenuOpen ? "flex" : "hidden"
+          } lg:flex items-center gap-8 font-bold pl-20`}
+        >
           <ul className="flex list-none gap-8 text-lg items-center">
             <li>
               <NavLink
