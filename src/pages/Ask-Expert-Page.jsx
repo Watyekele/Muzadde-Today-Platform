@@ -3,20 +3,19 @@ import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import { Link } from 'react-router-dom';
 
-
 function AskExpertPage() {
   const [questions, setQuestions] = useState([
     {
       patientName: "Mercy Ajok",
       question: "My 5-year-old has anger outbursts and is always beating his classmates. Will he outgrow?",
       answer: "Anger issues in children can be challenging. It's recommended to consult with a child psychologist for a thorough assessment and guidance.",
-      doctor: { name: "Dr. Miranda Atim", image: "src/assets/miranda.jpg", specialty: "Child Psychologist" },
+      doctor: { name: "Dr. Miranda Atim", image: "public/miranda.jpg", specialty: "Child Psychologist" },
     },
     {
       patientName: "Rose Mary",
       question: "My 1-year-old is very small, compared to all his agemates and has no appetite. What should I do?",
       answer: "Nutritional concerns are common among parents. Ensure you're offering a balanced diet. If concerns persist, consult with a nutritionist for personalized advice.",
-      doctor: { name: "Dr. Robinah Kitiibwa", image: "src/assets/nutritionist.jpg", specialty: "Nutritionist" },
+      doctor: { name: "Dr. Robinah Kitiibwa", image: "public/nutritionist.jpg", specialty: "Nutritionist" },
     },
   ]);
 
@@ -57,7 +56,7 @@ function AskExpertPage() {
       updatedQuestions[index].answer = doctorAnswer;
       updatedQuestions[index].doctor = {
         name: 'Doctor Name',
-        image: 'src/assets/doctor-image.jpg',
+        image: 'public/doctor-image.jpg',
         specialty: 'Specialty',
       };
       setQuestions(updatedQuestions);
@@ -74,7 +73,7 @@ function AskExpertPage() {
         <div>
           <section className="flex bg-zinc-200 w-10/12 pt-2 -mt-4 items-center text-1xl">
             <img
-              src="src/assets/stetescope.jpg"
+              src="public/stetescope.jpg"
               alt=""
               width={50}
               className="mr-2"
@@ -94,7 +93,7 @@ function AskExpertPage() {
             <p className="text-2xl  indent-16 font-bold">
               Get prompt advice from doctors and child specialists
             </p>
-          <div className="flex justify-right p-2 m-2">
+            <div className="flex justify-right p-2 m-2">
               <textarea
                 placeholder="Ask a question..."
                 value={newQuestion}
@@ -142,7 +141,11 @@ function AskExpertPage() {
               <div className="question-one ml-10" key={index}>
                 <section>
                   <article className="flex items-center">
-                    {/* ... */}
+                    <img
+                      src="public/mercy1.jpg" 
+                      alt="patient"
+                      className="rounded-full w-10 h-10 object-cover mr-2"
+                    />
                     <h4 className="font-bold">{question.patientName}</h4>
                   </article>
                   <p className="text-xl p-2 transition ease-in-out delay-70 hover:-translate-x-1 hover:scale-90 duration-50">
@@ -197,7 +200,7 @@ function AskExpertPage() {
           <div className="experts flex mt-4 ">
             <section className="mr-3 text-center">
               <img
-                src="src/assets/doctor 1.webp"
+                src="public/doctor 1.webp"
                 alt=""
                 className="rounded-md w-48 h-64 object-cover"
               />
@@ -206,7 +209,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="src/assets/miranda.jpg"
+                src="public/miranda.jpg"
                 alt="psychologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -215,7 +218,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="src/assets/nutritionist.jpg"
+                src="public/nutritionist.jpg"
                 alt="Nutritionist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -224,7 +227,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="src/assets/Dr. Celin wangi.jpg"
+                src="public/Dr. Celin wangi.jpg"
                 alt="Midwife image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -233,7 +236,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="src/assets/Dr. Muwanga John.jpg"
+                src="public/Dr. Muwanga John.jpg"
                 alt="Gynecologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -242,7 +245,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="src/assets/Dr. Lubanga Cristine.jpg"
+                src="public/Dr. Lubanga Cristine.jpg"
                 alt="Pediatrician image"
                 className="rounded-md  w-48 h-64 object-cover"
               />

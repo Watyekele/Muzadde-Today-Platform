@@ -9,21 +9,21 @@ const Talk = () => {
       parent: "Sarah S",
       question:
         "Hello, Any home remedies for cough and flu? My girl can hardly sleep",
-      image: "src/assets/download1.jpg",
+      image: "public/download1.jpg",
       answers: [
         {
           id: 11,
           user: "Michael M",
           answer:
             "I normally give my children lemon first thing every morning, and it helps",
-          image: "src/assets/muzade1.jpg",
+          image: "public/muzade1.jpg",
         },
         {
           id: 12,
           user: "Geraldine J",
           answer:
             "Try giving her Ginger and garlic every after 2 hours. It worked for mine",
-          image: "src/assets/muzadde2.jpg",
+          image: "public/muzadde2.jpg",
         },
       ],
     },
@@ -31,19 +31,19 @@ const Talk = () => {
       id: 2,
       parent: "Rehema N",
       question: "Any tips for managing screen time during this long holiday?",
-      image: "src/assets/download.jpg",
+      image: "public/download.jpg",
       answers: [
         {
           id: 21,
           user: "Sarah S",
           answer: "We have designated screen time hours at my home.",
-          image: "src/assets/download1.jpg",
+          image: "public/download1.jpg",
         },
         {
           id: 22,
           user: "Micheal M",
           answer: "We encourage outdoor activities, especially during daytime",
-          image: "src/assets/muzade1.jpg",
+          image: "public/muzade1.jpg",
         },
       ],
     },
@@ -51,20 +51,20 @@ const Talk = () => {
       id: 3,
       parent: "Ogwang R",
       question: "How do you deal with picky eaters?",
-      image: "src/assets/download2.jpg",
+      image: "public/download2.jpg",
       answers: [
         {
           id: 31,
           user: "Muzadde Today User",
           answer: "I normally give mine small portions after short intervals.",
-          image: "src/assets/default-avatar.jpg",
+          image: "public/default-avatar.jpg",
         },
         {
           id: 32,
           user: "Muzadde Today User",
           answer:
             "We get creative with food, for example, roll rice into balls",
-          image: "src/assets/default-avatar.jpg",
+          image: "public/default-avatar.jpg",
         },
       ],
     },
@@ -84,7 +84,7 @@ const Talk = () => {
       id: Date.now(),
       parent: "Muzadde Today User",
       question: newQuestion,
-      image: "src/assets/default-avatar.jpg",
+      image: "public/default-avatar.jpg",
       answers: [],
     };
 

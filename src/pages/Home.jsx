@@ -57,7 +57,7 @@ function Homepage() {
             <div className="flex-1 flex flex-col items-center">
               <div className="bg-white w-64 h-64 rounded-full mb-2 overflow-hidden">
                 <img
-                  src="src/assets/IMG-20231124-WA0024.jpg"
+                  src="public/IMG-20231124-WA0024.jpg"
                   alt="image of our services"
                   className="w-full h-full object-cover"
                 />
@@ -70,7 +70,7 @@ function Homepage() {
             <div className="flex-1 flex  flex-col items-center">
               <div className="bg-white w-64 h-64 rounded-full mb-2 overflow-hidden">
                 <img
-                  src="src/assets/IMG-20231124-WA0022.jpg"
+                  src="public/IMG-20231124-WA0022.jpg"
                   alt="image of our services"
                   className="w-full h-full object-cover"
                 />
@@ -83,7 +83,7 @@ function Homepage() {
             <div className="flex-1 flex flex-col items-center">
               <div className="bg-white w-64 h-64 rounded-full mb-2 overflow-hidden">
                 <img
-                  src="src/assets/IMG-20231124-WA0021.jpg"
+                  src="public/IMG-20231124-WA0021.jpg"
                   alt="image of our services"
                   className="w-full h-full object-cover"
                 />
@@ -102,7 +102,7 @@ function Homepage() {
             {/* Image */}
             <div className="w-full md:w-1/3 ml-0 md:ml-8">
               <img
-                src="src/assets/IMG-20231124-WA0019.jpg"
+                src="public/IMG-20231124-WA0019.jpg"
                 alt="Testimony"
                 className="rounded-md object-cover w-full md:w-48 h-96"
               />
@@ -113,7 +113,7 @@ function Homepage() {
               <h2 className="text-3xl font-bold mb-4">Testimonies</h2>
               <div className="flex items-center mb-4">
                 <img
-                  src="src/assets/muzadde2.jpg"
+                  src="public/muzadde2.jpg"
                   alt="parent image"
                   className="w-8 h-8 rounded-full mr-2 object-cover"
                 />
@@ -127,7 +127,7 @@ function Homepage() {
               </div>
               <div className="flex items-center">
                 <img
-                  src="src/assets/muzade1.jpg"
+                  src="public/muzade1.jpg"
                   alt="parent image"
                   className="w-8 h-8 rounded-full mr-2 object-cover"
                 />
