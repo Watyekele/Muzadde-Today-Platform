@@ -1,26 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function AskExpertPage() {
   const [questions, setQuestions] = useState([
     {
       patientName: "Mercy Ajok",
-      question: "My 5-year-old has anger outbursts and is always beating his classmates. Will he outgrow?",
-      answer: "Anger issues in children can be challenging. It's recommended to consult with a child psychologist for a thorough assessment and guidance.",
-      doctor: { name: "Dr. Miranda Atim", image: "public/miranda.jpg", specialty: "Child Psychologist" },
+      question:
+        "My 5-year-old has anger outbursts and is always beating his classmates. Will he outgrow?",
+      answer:
+        "Anger issues in children can be challenging. It's recommended to consult with a child psychologist for a thorough assessment and guidance.",
+      doctor: {
+        name: "Dr. Miranda Atim",
+        image: "public/miranda.jpg",
+        specialty: "Child Psychologist",
+      },
     },
     {
       patientName: "Rose Mary",
-      question: "My 1-year-old is very small, compared to all his agemates and has no appetite. What should I do?",
-      answer: "Nutritional concerns are common among parents. Ensure you're offering a balanced diet. If concerns persist, consult with a nutritionist for personalized advice.",
-      doctor: { name: "Dr. Robinah Kitiibwa", image: "public/nutritionist.jpg", specialty: "Nutritionist" },
+      question:
+        "My 1-year-old is very small, compared to all his agemates and has no appetite. What should I do?",
+      answer:
+        "Nutritional concerns are common among parents. Ensure you're offering a balanced diet. If concerns persist, consult with a nutritionist for personalized advice.",
+      doctor: {
+        name: "Dr. Robinah Kitiibwa",
+        image: "public/nutritionist.jpg",
+        specialty: "Nutritionist",
+      },
     },
   ]);
 
-  const [newQuestion, setNewQuestion] = useState('');
-  const [doctorAnswer, setDoctorAnswer] = useState('');
+  const [newQuestion, setNewQuestion] = useState("");
+  const [doctorAnswer, setDoctorAnswer] = useState("");
 
   const loginAsDoctor = () => {
     return { role: "doctor" };
@@ -40,27 +52,27 @@ function AskExpertPage() {
     };
 
     setQuestions([...questions, newQuestionObject]);
-    setNewQuestion('');
+    setNewQuestion("");
   };
 
   const handleAnswerQuestion = (index) => {
-    if (doctorAnswer.trim() === '') {
-      console.error('Answer cannot be empty');
+    if (doctorAnswer.trim() === "") {
+      console.error("Answer cannot be empty");
       return;
     }
 
     const user = loginAsDoctor();
 
-    if (user.role === 'doctor') {
+    if (user.role === "doctor") {
       const updatedQuestions = [...questions];
       updatedQuestions[index].answer = doctorAnswer;
       updatedQuestions[index].doctor = {
-        name: 'Doctor Name',
-        image: 'public/doctor-image.jpg',
-        specialty: 'Specialty',
+        name: "Doctor Name",
+        image: "public/doctor-image.jpg",
+        specialty: "Specialty",
       };
       setQuestions(updatedQuestions);
-      setDoctorAnswer('');
+      setDoctorAnswer("");
     } else {
       console.error("Only doctors can provide answers.");
     }
@@ -72,12 +84,7 @@ function AskExpertPage() {
       <div className="page bg-pink-50 mt-20 text-lg">
         <div>
           <section className="flex bg-zinc-200 w-10/12 pt-2 -mt-4 items-center text-1xl">
-            <img
-              src="public/stetescope.jpg"
-              alt=""
-              width={50}
-              className="mr-2"
-            />
+            <img src="/stetescope.jpg" alt="" width={50} className="mr-2" />
             <h4 className=" font-bold w-full">
               96% queries resolved in less than 45 minutes.{" "}
               <span className="text-blue-800 underline underline-offset-1">
@@ -142,7 +149,7 @@ function AskExpertPage() {
                 <section>
                   <article className="flex items-center">
                     <img
-                      src="public/mercy1.jpg" 
+                      src="public/mercy1.jpg"
                       alt="patient"
                       className="rounded-full w-10 h-10 object-cover mr-2"
                     />
@@ -176,7 +183,7 @@ function AskExpertPage() {
                         value={doctorAnswer}
                         onChange={(e) => setDoctorAnswer(e.target.value)}
                         className="border p-2"
-                        required 
+                        required
                       ></textarea>
                       <button
                         onClick={() => handleAnswerQuestion(index)}
@@ -209,7 +216,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="public/miranda.jpg"
+                src="/miranda.jpg"
                 alt="psychologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -218,7 +225,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="public/nutritionist.jpg"
+                src="/nutritionist.jpg"
                 alt="Nutritionist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -227,7 +234,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="public/Dr. Celin wangi.jpg"
+                src="/Dr. Celin wangi.jpg"
                 alt="Midwife image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -236,7 +243,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="public/Dr. Muwanga John.jpg"
+                src="/Dr. Muwanga John.jpg"
                 alt="Gynecologist image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
@@ -245,7 +252,7 @@ function AskExpertPage() {
             </section>
             <section className="mr-3 text-center">
               <img
-                src="public/Dr. Lubanga Cristine.jpg"
+                src="/Dr. Lubanga Cristine.jpg"
                 alt="Pediatrician image"
                 className="rounded-md  w-48 h-64 object-cover"
               />
