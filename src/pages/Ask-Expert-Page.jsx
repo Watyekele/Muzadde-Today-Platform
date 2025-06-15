@@ -13,7 +13,7 @@ function AskExpertPage() {
         "Anger issues in children can be challenging. It's recommended to consult with a child psychologist for a thorough assessment and guidance.",
       doctor: {
         name: "Dr. Miranda Atim",
-        image: "public/miranda.jpg",
+        image: "/miranda.jpg",
         specialty: "Child Psychologist",
       },
     },
@@ -25,7 +25,7 @@ function AskExpertPage() {
         "Nutritional concerns are common among parents. Ensure you're offering a balanced diet. If concerns persist, consult with a nutritionist for personalized advice.",
       doctor: {
         name: "Dr. Robinah Kitiibwa",
-        image: "public/nutritionist.jpg",
+        image: "/nutritionist.jpg",
         specialty: "Nutritionist",
       },
     },
@@ -68,7 +68,7 @@ function AskExpertPage() {
       updatedQuestions[index].answer = doctorAnswer;
       updatedQuestions[index].doctor = {
         name: "Doctor Name",
-        image: "public/doctor-image.jpg",
+        image: "/doctor-image.jpg",
         specialty: "Specialty",
       };
       setQuestions(updatedQuestions);
@@ -149,7 +149,7 @@ function AskExpertPage() {
                 <section>
                   <article className="flex items-center">
                     <img
-                      src="public/mercy1.jpg"
+                      src="/mercy1.jpg"
                       alt="patient"
                       className="rounded-full w-10 h-10 object-cover mr-2"
                     />
@@ -207,7 +207,7 @@ function AskExpertPage() {
           <div className="experts flex mt-4 ">
             <section className="mr-3 text-center">
               <img
-                src="public/doctor 1.webp"
+                src="/doctor 1.webp"
                 alt=""
                 className="rounded-md w-48 h-64 object-cover"
               />
